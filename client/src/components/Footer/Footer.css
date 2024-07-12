@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+.total_footer {
+    background-color: rgb(43, 42, 42);
+    color: white;
+    padding: 20px;
+    font-family: "Outfit", sans-serif;
+}
+
+.footer {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 20px;
+}
+
+.left, .center_, .right_ {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.left ul, .center_ ul, .right_ ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.left ul {
+    display: flex;
+    gap: 10px;
+}
+
+.end {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    height: 20px;            
+    margin-top: 20px;
+}

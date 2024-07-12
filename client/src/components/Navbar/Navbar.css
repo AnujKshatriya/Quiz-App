@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: whitesmoke;
+    font-family: "Outfit",sans-serif;
+    box-shadow: 2px 2px 2px red;
+}
+
+.title{
+    cursor: pointer;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    
+}
+
+
+
+.center_list{
+    display: flex;
+    list-style-type: none;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.center_list li{
+    cursor: pointer;
+}
+
+
+.active{
+    color: red;
+    text-decoration: underline;
+    
+}
+.right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-right: 10px;
+
+
+}
+
+.right button{
+    padding: 10px 15px 10px 15px;
+    font-size: 15px;
+    font: bolder;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.right button:hover{
+    transform: scale(1.05);
+}
+
+.login{
+    border: 2px solid red;
+    color: red;
+}
+
+
+.SignUp{
+    border: 2px solid red;
+    background-color: red;
+    color: white;
+
+}
+
+
