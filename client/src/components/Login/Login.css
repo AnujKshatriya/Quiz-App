@@ -1,0 +1,94 @@
+.overlay {
+    position: fixed; /* Cover full viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    backdrop-filter: blur(2px); /* Background blur effect */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+/* Login form container */
+.login_form {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 350px; /* You can adjust the width as needed */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.head_part {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close {
+    font-weight: bolder;
+    font-size: 20px;
+    border: solid 2px black;
+    padding: 3px 5px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.head_part h1 {
+    margin: 0;
+}
+
+.form_items input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.buttonforlogin {
+    width: 100%;
+}
+
+.login_button {
+    width: 100%;
+    padding: 10px;
+    background-color: red; /* Green background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login_button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.permission {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.permission input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.base {
+    margin-top: 20px;
+}
+
+.base span {
+    color: blue;
+    cursor: pointer;
+}

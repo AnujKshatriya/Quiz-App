@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import './Navbar.css';
+// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-const Navbar = () => {
+
+const Navbar = ({showLogin,showSignup}) => {
 
     const [menu, selectMenu] = useState("None")
+    const [button,setButton] = useState("None")
   return (
     <div>
         <div className='navbar'>
@@ -21,9 +24,10 @@ const Navbar = () => {
             </ul>
           </div>
 
+
           <div className="right">
-            <button className="login">Login</button>
-            <button className="SignUp">Sign Up</button>
+            <button className="login"  onClick={()=>showLogin(true)}>Login</button>
+            <button className="SignUp" onClick={()=>showSignup(true)}>Sign Up</button>
           </div>
 
 
