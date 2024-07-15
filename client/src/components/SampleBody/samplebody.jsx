@@ -6,8 +6,11 @@ const BodySection = () => {
         <div className="body-section">
             <h1>Welcome to the Quiz</h1>
             <p>Test your knowledge with our exciting quiz. Click the button below to get started and see how much you know!</p>
-            <button className="start-button">Start Quiz</button>
-
+            <div className='button-section'>
+                <button className="start-button">Create Quiz</button>
+                {/* <button className="start-button">Join Quiz</button> */}
+                <input placeholder='# Enter Code To Join Quiz' className='join-button' type="text" />
+            </div>
             <div className="question-card">
                 <h2>Sample Question</h2>
                 <p>What is the capital of France?</p>

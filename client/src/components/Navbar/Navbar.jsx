@@ -16,9 +16,9 @@ const Navbar = ({showLogin,showSignup}) => {
           <div className="center">
             <ul className="center_list" >
                 <li onClick={()=>selectMenu(menu !== "home" ? "home" : "none")} className={menu==="home"?"active":"home"}>Home</li>
-                <li onClick={()=>selectMenu(menu !== "myquiz" ? "myquiz" : "none")} className={menu==="myquiz"?"active":"myquiz"}>My_Quiz</li>
+                <li onClick={()=>selectMenu(menu !== "myquiz" ? "myquiz" : "none")} className={menu==="myquiz"?"active":"myquiz"}>Quiz</li>
                 <li onClick={()=>selectMenu(menu !== "leaderboard" ? "leaderboard" : "none")} className={menu==="leaderboard"?"active":"leaderboard"}>Leaderboard</li>
-                <li onClick={()=>selectMenu(menu !== "myscore" ? "myscore" : "none")} className={menu==="myscore"?"active":"myscore"}>My_Scores</li>
+                <li onClick={()=>selectMenu(menu !== "myscore" ? "myscore" : "none")} className={menu==="myscore"?"active":"myscore"}>Scores</li>
                 <li onClick={()=>selectMenu(menu !== "about" ? "about" : "none")} className={menu==="about"?"active":"about"}>About</li>
                 {/* <li></li> */}
             </ul>

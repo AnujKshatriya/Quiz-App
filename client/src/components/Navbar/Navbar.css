@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap'); */
 .navbar{
     display: flex;
     justify-content: space-between;
     padding: 10px;
     background-color: whitesmoke;
-    font-family: "Outfit",sans-serif;
-    box-shadow: 2px 2px 2px red;
+    /* font-family: "Outfit",sans-serif; */
+    box-shadow: 2px 2px 2px 10px red;
 }
 
 .title{
