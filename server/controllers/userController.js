@@ -46,14 +46,10 @@ const RegisterUser = async (req, res) => {
             password: hash,
         });
 
-        console.log("New user data to be saved:", newUser);
-
         const user = await newUser.save();
-        console.log("User saved:", user);
 
         const token = createToken(user._id);
-        console.log("Token created:", token);
-
+        
         res.json({ success: true, token });
 
     } catch (error) {
