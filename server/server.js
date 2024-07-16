@@ -3,6 +3,8 @@ import cors from 'cors'
 import { configDotenv } from 'dotenv'
 import { app, server } from './socket/socket.js'
 import { connectDb } from './config/database.js'
+import UserRouter from "./route/userRoute.js"
+
 configDotenv()
 
 const port = process.env.PORT
@@ -16,6 +18,9 @@ app.use(cors({
 app.get('/',(req,res)=>{
     res.send("Quiz app")
 })
+
+//Api Routes
+app.use("/api/user",UserRouter)
 
 server.listen(port,()=>{
     connectDb()
