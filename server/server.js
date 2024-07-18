@@ -4,6 +4,7 @@ import { configDotenv } from 'dotenv'
 import { app, server } from './socket/socket.js'
 import { connectDb } from './config/database.js'
 import UserRouter from "./route/userRoute.js"
+import QuizRouter from './route/quizRoute.js'
 
 configDotenv()
 
@@ -15,12 +16,14 @@ app.use(cors({
     origin: "http://localhost:5173",
     credentials : true
 }))
+
 app.get('/',(req,res)=>{
     res.send("Quiz app")
 })
 
 //Api Routes
 app.use("/api/user",UserRouter)
+app.use("/api/quiz",QuizRouter)
 
 server.listen(port,()=>{
     connectDb()

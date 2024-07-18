@@ -1,12 +1,37 @@
 import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema({
-    username:{type:String,required:true},
-    email:{type:String,required:true,unique:true},
-    password:{type:String,required:true}
+    username:
+    {
+        type : String,
+        required : true
+    },
+    email:
+    {
+        type : String,
+        required : true,
+        unique : true
+    },
+    password:
+    {
+        type : String,
+        required : true
+    },
+    quizCreated:[
+        {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : "quiz"
+        }
+    ],
+    quizJoined:[
+        {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : "quiz"
+        }
+    ]
 })
 
-const UserModel = mongoose.models.user || mongoose.model("user",UserSchema);
+const UserModel = mongoose.model("user",UserSchema);
 
 export default UserModel;
 
