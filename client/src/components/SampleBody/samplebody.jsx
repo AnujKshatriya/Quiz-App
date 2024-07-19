@@ -1,5 +1,7 @@
 import React from 'react';
 import './samplebody.css';
+import { Link } from 'react-router-dom';  // Import Link from react-router-dom
+
 
 const BodySection = () => {
     return (
@@ -7,7 +9,7 @@ const BodySection = () => {
             <h1>Welcome to the Quiz</h1>
             <p>Test your knowledge with our exciting quiz. Click the button below to get started and see how much you know!</p>
             <div className='button-section'>
-                <button className="start-button">Create Quiz</button>
+                <Link to='/quiz-create'><button className="start-button">Create Quiz</button></Link>
                 {/* <button className="start-button">Join Quiz</button> */}
                 <input placeholder='# Enter Code To Join Quiz' className='join-button' type="text" />
             </div>
