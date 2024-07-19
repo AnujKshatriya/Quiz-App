@@ -136,3 +136,23 @@
     box-sizing: border-box;
 }
 
+.delete{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.question__delete{
+    padding: 3px;
+    margin-right: 10px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-weight: 1000;
+    font-size: 18px;
+    
+}
+
+.question__delete:hover{
+    scale: 1.25;
+}

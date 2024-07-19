@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./question.css";
 
-const Question = () => {
+const Question = ({id,deleteQuestion}) => {
   const [options, setOptions] = useState([
     { id: 1, value: "" },
     { id: 2, value: "" },
@@ -22,10 +22,25 @@ const Question = () => {
   return (
     <div>
       <div className="question__section">
+      
+      {id>1?
+        <div className="delete">
+          <button
+            className="question__delete"
+            onClick={() => deleteQuestion(id)}
+          >
+            X
+          </button>
+        </div>
+        :""
+      }
+      
+
+        
         <div className="question">
           {/* UseState Case */}
           <p>
-            <span>Question 1</span>
+            <span>Question {id}</span>
           </p>
           <input type="text" placeholder="Your Question Here" />
         </div>

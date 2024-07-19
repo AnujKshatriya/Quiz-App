@@ -61,7 +61,7 @@
 
 .quiz__left input{
     border: none;
-    border-bottom: 2px solid gray;
+    border-bottom: 1px solid gray;
     outline: none;
     padding: 5px ;
     width: 350px;

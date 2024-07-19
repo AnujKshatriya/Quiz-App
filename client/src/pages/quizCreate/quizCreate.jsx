@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './quizCreate.css'
 import { MdQuiz } from "react-icons/md";
 import Question from '../../components/question/question';
 
 
 const QuizCreate = () => {
+
+  const [questions, setQuestions] = useState([{id:1}]);
+
+  const addNewQuestion = () =>{
+    setQuestions([...questions,{id:questions.length + 1}])
+  }
+
+  const deleteQuestion = (id) =>{
+    setQuestions(questions.filter(question=>question.id !== id))
+  }
+
   return (
     <div>
       <div className="full">
@@ -34,12 +45,14 @@ const QuizCreate = () => {
                 <h2>Quiz Questions: </h2>
             </div>
 
-            <div className="eachQuestion">
-                <Question/>
-            </div>
+            {questions.map(question => (
+              <div className="eachQuestion" key={question.id}>
+                <Question id={question.id} deleteQuestion={deleteQuestion}/>
+              </div>
+            ))}
 
             <div className="add__question">
-                <button className="add__question__button">Add a New Question</button>
+                <button className="add__question__button" onClick={addNewQuestion}>Add a New Question</button>
             </div>
         </div>
 
