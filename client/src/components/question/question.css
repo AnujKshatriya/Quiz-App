@@ -60,6 +60,29 @@
     box-sizing: border-box;
 }
 
+.input__area{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border: 0.25px solid gray;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.choice__delete{
+    padding: 3px;
+    margin-right: 10px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-weight: 1000;
+    font-size: 18px;
+}
+
+.choice__delete:hover{
+    scale: 1.5;
+}
+
 .choice {
     display: flex;
     gap: 10px;
@@ -73,9 +96,9 @@
     padding-top: 20px;
     padding-bottom: 20px;
     border-radius: 5px;
-    border: 0.25px solid gray;
     outline: none;
     box-sizing: border-box;
+    border: none;
 }
 
 .new__choice {
@@ -92,6 +115,7 @@
     font-weight: 500;
     padding-left: 35px;
     padding-right: 35px;
+    cursor: pointer;
 }
 
 .correct {
