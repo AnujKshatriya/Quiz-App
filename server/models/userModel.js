@@ -17,6 +17,11 @@ const UserSchema = new mongoose.Schema({
         type : String,
         required : true
     },
+    totalQuizCreated : 
+    {
+        type : Number,
+        default : 0
+    },
     quizCreated:[
         {
             type : mongoose.Schema.Types.ObjectId,

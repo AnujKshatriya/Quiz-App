@@ -5,11 +5,13 @@ import { app, server } from './socket/socket.js'
 import { connectDb } from './config/database.js'
 import UserRouter from "./route/userRoute.js"
 import QuizRouter from './route/quizRoute.js'
+import cookieParser from 'cookie-parser'
 
 configDotenv()
 
 const port = process.env.PORT
 
+app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cors({

@@ -49,8 +49,8 @@ const RegisterUser = async (req, res) => {
         const user = await newUser.save();
 
         const token = createToken(user._id);
-        
-        res.json({ success: true, token });
+
+        res.json({ success: true, message : "Account Created Successfully" });
 
     } catch (error) {
         console.error("Error registering user:", error);
@@ -75,12 +75,25 @@ const LoginUser = async (req, res) => {
         }
 
         const token = createToken(user._id);
-        res.json({ success: true, token });
+
+        res.cookie("token", token, {maxAge:5*24*60*60*1000, httpOnly:true, sameSite:"strict"})
+
+        res.json({ success: true, message : "Logged In Successfully" });
 
     } catch (error) {
         console.log(error);
-        res.json({ success: false, message: "Error" });
+        res.json({ success: false, message: error.message });
     }
 };
 
-export { LoginUser, RegisterUser };
+const LogoutUser = (req,res)=>{
+    try {
+        res.status(200).cookie("token", "").json({success: true, message: "Logged Out Successfully"})
+    } 
+    catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message });
+    }
+}
+
+export { LoginUser, RegisterUser , LogoutUser};

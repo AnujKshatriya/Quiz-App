@@ -1,14 +1,12 @@
 import jwt from 'jsonwebtoken';
 
 const AuthMiddleWare = async(req,res,next) =>{
-    const {token} = req.headers;
+    const token = req.cookies.token;
 
     if (!token) {
-        return res.status(401).json({ success: false, message: "Not Authorized to Log" });
+        return res.status(401).json({ success: false, message: "Please Login First" });
     }
     try {
-        console.log("Token Recieved: ",token)
-
         const decode = jwt.verify(token, process.env.JWT_key)
         req.body.userId = decode.id;
         next();
