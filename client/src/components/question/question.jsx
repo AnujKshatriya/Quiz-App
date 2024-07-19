@@ -5,19 +5,21 @@ const Question = ({id,deleteQuestion}) => {
   const [options, setOptions] = useState([
     { id: 1, value: "" },
     { id: 2, value: "" },
+    { id: 3, value: "" },
+    { id: 4, value: "" }
   ]);
 
-  const addNewChoice = () => {
-    setOptions([...options,{id:options.length +1, value:""}])
-  };
+  // const addNewChoice = () => {
+  //   setOptions([...options,{id:options.length +1, value:""}])
+  // };
 
-  const handleOnChange = (id, newValue) => {
-      setOptions(options.map(option => option.id === id? {...option, value:newValue}:option))
-  };
+  // const handleOnChange = (id, newValue) => {
+  //     setOptions(options.map(option => option.id === id? {...option, value:newValue}:option))
+  // };
 
-  const deleteChoice = (id) =>{
-    setOptions(options.filter(option => option.id !== id));
-  }
+  // const deleteChoice = (id) =>{
+  //   setOptions(options.filter(option => option.id !== id));
+  // }
 
   return (
     <div>
@@ -55,25 +57,25 @@ const Question = ({id,deleteQuestion}) => {
                   <div className="choice">
                     <p>{String.fromCharCode(65 + option.id - 1)}:</p>
                     <div className="input__area">
-                      <input type="text"  placeholder="Add your Option" value={option.value}  onChange={(e)=>handleOnChange(option.id,e.target.value)}/>
-                      {option.id > 2 && (
+                      <input type="text"  placeholder="Add your Option" value={option.value} />
+                      {/* {option.id > 2 && (
                         <button
                           className="choice__delete"
                           onClick={() => deleteChoice(option.id)}
                         >
                           X
                         </button>
-                      )}       
+                      )}        */}
                     </div>         
                   </div>
                 </div>
               ))}
 
-              <div className="new__choice">
+              {/* <div className="new__choice">
                 <button className="new__choice" onClick={addNewChoice}  >
                   Add a New Choice
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

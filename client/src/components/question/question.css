@@ -5,6 +5,8 @@
     
     border-radius: 7px;
     width: 98%; /* Ensure it takes full width of its container */
+    box-shadow: 2px 2px red;
+    margin-bottom: 15px;
 }
 
 .question {
