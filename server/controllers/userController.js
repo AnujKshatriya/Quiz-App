@@ -49,8 +49,10 @@ const RegisterUser = async (req, res) => {
         const user = await newUser.save();
 
         const token = createToken(user._id);
+        
+        res.cookie("token", token, {maxAge:5*24*60*60*1000, httpOnly:true, sameSite:"strict"})
 
-        res.json({ success: true, message : "Account Created Successfully" });
+        res.json({ success: true, message : "Account Created Successfully", userId : user._id });
 
     } catch (error) {
         console.error("Error registering user:", error);
@@ -78,7 +80,7 @@ const LoginUser = async (req, res) => {
 
         res.cookie("token", token, {maxAge:5*24*60*60*1000, httpOnly:true, sameSite:"strict"})
 
-        res.json({ success: true, message : "Logged In Successfully" });
+        res.json({ success: true, message : "Logged In Successfully", userId : user._id });
 
     } catch (error) {
         console.log(error);

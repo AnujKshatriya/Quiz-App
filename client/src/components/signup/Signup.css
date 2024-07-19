@@ -17,8 +17,8 @@
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 350px; /* You can adjust the width as needed */
+    padding: 20px 30px;
+    width: 450px; /* You can adjust the width as needed */
 }
 
 .container {
@@ -27,51 +27,8 @@
     align-items: center;
 }
 
-.head_part {
-    text-align: center;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.close {
-    font-weight: bolder;
-    font-size: 20px;
-    border: solid 2px black;
-    padding: 3px 5px;
-    cursor: pointer;
-    border-radius: 10px;
-}
-
-.head_part h1 {
-    margin: 0;
-}
-
-.form_items input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
 .buttonforlogin {
     width: 100%;
-}
-
-.login_button {
-    width: 100%;
-    padding: 10px;
-    background-color: red; /* Green background */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.login_button:hover {
-    background-color: #45a049; /* Darker green on hover */
 }
 
 .permission {
