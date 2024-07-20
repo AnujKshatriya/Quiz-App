@@ -113,6 +113,8 @@
 .add__question{
     place-self: center;
     margin-top: 15px;
+    display: flex;
+    gap: 15px;
     
 }
 
