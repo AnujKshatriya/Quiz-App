@@ -16,7 +16,12 @@ const Login = ({showLogin,showSignup}) => {
   const loginUser = async() => {
     try {
       const res = await axios.post("http://localhost:3000/api/user/login",{email,password}, { withCredentials: true })
+      console.log('Login response:', res.data); // Add this line to log the response
       if(res.data.success){
+
+        const token = res.data.token; // Ensure the server sends this token
+        localStorage.setItem('token', token);
+        console.log('Token: ',token)
         
         dispatch(setAuthUser(res.data.userId))
         toast.success(res.data.message)

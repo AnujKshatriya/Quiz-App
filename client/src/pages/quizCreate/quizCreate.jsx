@@ -5,11 +5,19 @@ import { MdQuiz } from "react-icons/md";
 import Question from '../../components/question/question';
 import toast from 'react-hot-toast';
 import Cookies from 'js-cookie';
+import {useSelector} from 'react-redux';
+
 
 const QuizCreate = () => {
+
+  const owner = useSelector((state) => {
+    console.log('Redux state:', state); // Log the entire Redux state for debugging
+    return state.user.authUser;
+  });
   const [currentQuestionId, setCurrentQuestionId] = useState(1);
   const [quizName,setQuizName] = useState("")
   const [quizQuestions,setQuizQuestions] = useState([]);
+  const [participants, setParticipants] = useState([])
   const [questions, setQuestions] = useState([{
     id: 0,
     data: {
@@ -19,14 +27,14 @@ const QuizCreate = () => {
     }
   }]);
 
-  const [owner,setOwner] = useState('')
-
+  // Maybe to Change
 
   useEffect(() => {
     const token = Cookies.get('token') || localStorage.getItem('token');
     if (token) {
       localStorage.setItem('token', token);
     }
+    console.log('Token:', token); // Log token to verify
   }, []);
 
   //Add new Question
@@ -98,15 +106,45 @@ const QuizCreate = () => {
   };
 
 // Saving or Creating a Quiz
-  const saveQuiz = async() =>{
-    const token = Cookies.get('token') || localStorage.getItem('token');  
-      if (!token) {
-        throw new Error('No token found. Please log in again.');
+const saveQuiz = async() => {
+  try {
+    // Retrieve token from cookies or localStorage
+    const token = Cookies.get('token') || localStorage.getItem('token');
+    console.log('Token in saveQuiz:', token); // Log token before making API call
+
+    if (!token) {
+      throw new Error('No token found. Please log in again.');
+    }
+
+    // Log token and owner for debugging purposes
+    console.log('Token:', token);
+    console.log('Owner:', owner);
+
+    // Send the request to create a quiz
+    const response = await axios.post('http://localhost:3000/api/quiz/createQuiz', {
+      owner: owner,
+      name: quizName,
+      questions: quizQuestions
+    }, {
+      withCredentials: true,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}` // Include the token in the headers
       }
+    });
 
-
-
+    // Handle the response
+    if (response.data.success) {
+      toast.success(response.data.message);
+    } else {
+      toast.error(response.data.message);
+    }
+  } catch (error) {
+    toast.error("There was an error saving the quiz!");
+    console.error("There was an error saving the quiz!", error);
   }
+}
+
   return (
     <div>
       <div className="full">
