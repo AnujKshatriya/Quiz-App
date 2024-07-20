@@ -2,23 +2,41 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px;
-    background-color: #f9f9f9;
+    padding: 40px 5vw;
+    background-color:white;
     min-height: 80vh; /* Ensures the body takes up most of the screen height */
 }
 
+.hero-section{
+    height: 60vh;
+    display: flex;
+    justify-content: space-between;
+}
+.hero-right{
+    width: 40%;
+    
+}
+.hero-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
 .body-section h1 {
-    font-size: 2.5em;
+    font-size: 3.5em;
     margin-bottom: 20px;
-    color: #333;
+    color: #c90000;
+    white-space: nowrap;
 }
 
 .body-section p {
     font-size: 1.2em;
     color: #666;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     text-align: center;
-    max-width: 600px;
+    width: 80%;
+    line-height: 30px;
 }
 .button-section{
     width: 100%;
@@ -49,6 +67,13 @@
 .start-button:hover {
     background-color: rgb(178, 0, 0);
 }
+.sample-question{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 20px;
+}
 
 .question-card {
     background-color: white;
@@ -61,6 +86,7 @@
 }
 
 .question-card h2 {
+    text-align: center;
     font-size: 1.5em;
     margin-bottom: 15px;
 }

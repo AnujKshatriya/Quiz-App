@@ -19,9 +19,6 @@ app.use(cors({
     credentials : true
 }))
 
-app.get('/',(req,res)=>{
-    res.send("Quiz app")
-})
 
 //Api Routes
 app.use("/api/user",UserRouter)

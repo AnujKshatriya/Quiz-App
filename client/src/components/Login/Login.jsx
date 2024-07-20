@@ -15,7 +15,7 @@ const Login = ({showLogin,showSignup}) => {
 
   const loginUser = async() => {
     try {
-      const res = await axios.post("http://localhost:3000/api/user/login",{email,password})
+      const res = await axios.post("/api/user/login",{email,password})
       if(res.data.success){
         dispatch(setAuthUser(res.data.userId))
         toast.success(res.data.message)
