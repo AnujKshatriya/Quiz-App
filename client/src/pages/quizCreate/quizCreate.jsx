@@ -4,16 +4,12 @@ import './quizCreate.css';
 import { MdQuiz } from "react-icons/md";
 import Question from '../../components/question/question';
 import toast from 'react-hot-toast';
-import Cookies from 'js-cookie';
 import {useSelector} from 'react-redux';
 
 
 const QuizCreate = () => {
 
-  const owner = useSelector((state) => {
-    console.log('Redux state:', state); // Log the entire Redux state for debugging
-    return state.user.authUser;
-  });
+  const owner = useSelector(store=>store.user.authUser);
   const [currentQuestionId, setCurrentQuestionId] = useState(1);
   const [quizName,setQuizName] = useState("")
   const [quizQuestions,setQuizQuestions] = useState([]);
@@ -26,19 +22,31 @@ const QuizCreate = () => {
       answer: ""
     }
   }]);
+  const [savedQuestionId, setSavedQuestionId] = useState()
 
-  // Maybe to Change
-
-  useEffect(() => {
-    const token = Cookies.get('token') || localStorage.getItem('token');
-    if (token) {
-      localStorage.setItem('token', token);
-    }
-    console.log('Token:', token); // Log token to verify
-  }, []);
 
   //Add new Question
   const addNewQuestion = () => {
+    const prevIndex = questions.length - 1;  // checking if previous quesition is filled completely or not
+    if(prevIndex >= 0){
+      const {questionName, options, answer} = questions[prevIndex].data
+      if(questionName==="" || answer===""){
+        toast.error("Please fill previous question data first")
+        return ;
+      }
+      options.forEach(option => {
+        if(option.value==="") {
+          toast.error("Please fill previous question data first")
+          return ;
+        }
+      });
+    }
+
+    if(prevIndex !== savedQuestionId){
+      toast.error("Please Save Previous Question")
+      return ;
+    }
+
     setQuestions([...questions, {
       id: questions.length ,
       data: {
@@ -50,8 +58,55 @@ const QuizCreate = () => {
   };
 
   //Question Delete
-  const deleteQuestion = (id) => {
-    setQuestions(questions.filter(question => question.id !== id));
+  const deleteQuestion = async(id) => {
+    let size = 0;   // 1) case when user want to delete single question
+    let idx = 0;
+    quizQuestions.forEach((element,indx) => {
+      if(element!=="") {
+        size++;
+        idx == indx;
+      }
+    });
+    if(size<=1 && idx===id){
+      toast.error("Single Question Is Must")
+      return;
+    }
+
+
+    const toDeleteQuestion = questions.find(obj => obj.id === id)?.data; // 2) case when user want to delete empty question section
+    const {questionName, options, answer} = toDeleteQuestion   
+      if(questionName==="" || answer===""){
+        setQuestions(questions.filter(question => question.id !== id));
+        toast.success("Question Deleted Successfully")
+        return ;
+      }
+      options.forEach(option => {
+        if(option.value==="") {
+          setQuestions(questions.filter(question => question.id !== id));
+          toast.success("Question Deleted Successfully")
+          return ;
+        }
+      });
+  
+
+    const quesId = quizQuestions[id]  // 3) case when user want to delete question which he had already saved in database
+    try {
+      const response = await axios.post('http://localhost:3000/api/quiz/deleteQuestion', {
+        questionId : quesId
+      }, {
+        withCredentials: true, 
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      })
+      quizQuestions[id] = ""
+      toast.success("Question Deleted Successfully")
+      setQuestions(questions.filter(question => question.id !== id));
+    } 
+    catch (error) {
+      toast.error(error.message)
+    }
+    
   };
 
 
@@ -62,22 +117,19 @@ const QuizCreate = () => {
     ));
   };
 
-//Creating a Quiz
+//Saving a Question
   const saveQuestion = async (id) => {
+    if(savedQuestionId===id){
+      toast.error("Question is already saved")
+      return
+    }
+
     try {
-      // Retrieve token from cookies
-      const token = Cookies.get('token') || localStorage.getItem('token');  
-      if (!token) {
-        throw new Error('No token found. Please log in again.');
-      }
-  
       const questionToSave = questions.find(question => question.id === id);
       if (!questionToSave) {
         throw new Error('Question Not Found');
       }
-  
       const { data } = questionToSave;
-
       const response = await axios.post('http://localhost:3000/api/quiz/createQuestion', {
         questionName: data.questionName,
         option: data.options.map(opt => opt.value),
@@ -86,60 +138,67 @@ const QuizCreate = () => {
         withCredentials: true, 
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}` 
         }
       });
   
       if (response.data.success) {
-
         setQuizQuestions(prevState => [...prevState, response.data.questionId]);
-        console.log([...quizQuestions, response.data.questionId]); // Log updated state
+        setSavedQuestionId(id)
         toast.success(response.data.message);
       } else {
         toast.error(response.data.message);
       }
   
-    } catch (error) {
+    } 
+    catch (error) {
       toast.error("There was an error saving the question!");
       console.error("There was an error saving the question!", error);
     }
   };
 
-// Saving or Creating a Quiz
-const saveQuiz = async() => {
-  try {
-    // Retrieve token from cookies or localStorage
-    const token = Cookies.get('token') || localStorage.getItem('token');
-    console.log('Token in saveQuiz:', token); // Log token before making API call
 
-    if (!token) {
-      throw new Error('No token found. Please log in again.');
+// Saving a Quiz
+const saveQuiz = async() => { 
+  const prevIndex = questions.length - 1;  // checking if previous quesition is filled completely or not before saving quiz
+    if(prevIndex >= 0){
+      const {questionName, options, answer} = questions[prevIndex].data
+      if(questionName==="" || answer===""){
+        toast.error("Please Fill All Question Before Saving Quiz")
+        return ;
+      }
+      options.forEach(option => {
+        if(option.value==="") {
+          toast.error("Please Fill All Question Before Saving Quiz")
+          return ;
+        }
+      });
+
+      if(prevIndex > savedQuestionId){
+        toast.error("Please Save All Question Before Saving Quiz")
+        return ;
+      }
     }
-
-    // Log token and owner for debugging purposes
-    console.log('Token:', token);
-    console.log('Owner:', owner);
-
-    // Send the request to create a quiz
+  try {
+    const questionIdArray =  quizQuestions.filter((questionId)=>questionId!=="")
     const response = await axios.post('http://localhost:3000/api/quiz/createQuiz', {
       owner: owner,
       name: quizName,
-      questions: quizQuestions
+      questions: questionIdArray
     }, {
       withCredentials: true,
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}` // Include the token in the headers
       }
     });
 
-    // Handle the response
     if (response.data.success) {
       toast.success(response.data.message);
-    } else {
+    } 
+    else {
       toast.error(response.data.message);
     }
-  } catch (error) {
+  } 
+  catch (error) {
     toast.error("There was an error saving the quiz!");
     console.error("There was an error saving the quiz!", error);
   }

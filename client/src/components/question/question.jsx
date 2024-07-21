@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./question.css";
+import { MdOutlineDelete } from "react-icons/md";
 
 const Question = ({id, deleteQuestion, data, onUpdate, setCurrentQuestionId}) => {
   
@@ -38,13 +39,13 @@ const Question = ({id, deleteQuestion, data, onUpdate, setCurrentQuestionId}) =>
       <div className="question__section">
       
         {/* Delete Question */}
-        {id>1?
+        {id>=0?
           <div className="delete">
             <button
               className="question__delete"
               onClick={() => deleteQuestion(id)}
             >
-              X
+              < MdOutlineDelete className="del-icon"/>
             </button>
           </div>
           :""

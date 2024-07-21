@@ -20,7 +20,7 @@
     color: black;
 }
 
-.header button{
+.header .save{
     padding: 10px 20px 10px 20px;
     border: none;
     background-color: rgb(233, 0, 0);
@@ -29,6 +29,14 @@
     border-radius: 10px;
     font-size: 15px;
     cursor: pointer;
+    transition: linear 0.3s ease;
+}
+.save:hover{
+    background-color: rgb(204, 4, 4);
+}
+.save:active{
+    background-color: rgb(204, 4, 4);
+    transform: scale(1.05);
 }
 
 .quiz{
@@ -128,4 +136,12 @@
     color: white;
     border-radius: 7px ;
     cursor: pointer;
+    transition: linear 0.3s ease;
+}
+.add__question__button:hover{
+    background-color: rgb(204, 4, 4);
+}
+.add__question__button:active{
+    background-color: rgb(204, 4, 4);
+    transform: scale(1.05);
 }
