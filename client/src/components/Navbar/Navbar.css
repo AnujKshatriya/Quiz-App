@@ -1,9 +1,12 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap'); */
 .navbar{
+    position: relative;
     display: flex;
     justify-content: space-between;
-    padding: 10px;
-    background-color: whitesmoke;
+    padding: 10px 5vw;
+    background-color: white;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+    z-index: 10;
     /* font-family: "Outfit",sans-serif; */
 }
 
@@ -62,6 +65,7 @@
 .login{
     border: 2px solid red;
     color: red;
+    background-color: white;
 }
 
 

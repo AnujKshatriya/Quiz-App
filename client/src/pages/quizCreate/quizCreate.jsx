@@ -91,7 +91,7 @@ const QuizCreate = () => {
 
     const quesId = quizQuestions[id]  // 3) case when user want to delete question which he had already saved in database
     try {
-      const response = await axios.post('http://localhost:3000/api/quiz/deleteQuestion', {
+      const response = await axios.post('/api/quiz/deleteQuestion', {
         questionId : quesId
       }, {
         withCredentials: true, 
@@ -130,7 +130,7 @@ const QuizCreate = () => {
         throw new Error('Question Not Found');
       }
       const { data } = questionToSave;
-      const response = await axios.post('http://localhost:3000/api/quiz/createQuestion', {
+      const response = await axios.post('/api/quiz/createQuestion', {
         questionName: data.questionName,
         option: data.options.map(opt => opt.value),
         answer: data.answer
@@ -180,7 +180,7 @@ const saveQuiz = async() => {
     }
   try {
     const questionIdArray =  quizQuestions.filter((questionId)=>questionId!=="")
-    const response = await axios.post('http://localhost:3000/api/quiz/createQuiz', {
+    const response = await axios.post('/api/quiz/createQuiz', {
       owner: owner,
       name: quizName,
       questions: questionIdArray
