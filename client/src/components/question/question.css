@@ -145,14 +145,18 @@
 }
 
 .question__delete{
-    padding: 3px;
     margin-right: 10px;
     border: none;
     background-color: transparent;
     cursor: pointer;
-    font-weight: 1000;
-    font-size: 18px;
-    
+    transition: linear 0.3s ease;
+}
+.del-icon{
+    font-size: 30px;
+    background-color: red;
+    padding: 4px;
+    border-radius: 50%;
+    transition: linear 0.3s ease;
 }
 
 .question__delete:hover{
