@@ -22,7 +22,7 @@ const QuizCreate = () => {
       answer: ""
     }
   }]);
-  const [savedQuestionId, setSavedQuestionId] = useState()
+  const [savedQuestionId, setSavedQuestionId] = useState(-1)
 
 
   //Add new Question
@@ -160,6 +160,10 @@ const QuizCreate = () => {
 // Saving a Quiz
 const saveQuiz = async() => { 
   const prevIndex = questions.length - 1;  // checking if previous quesition is filled completely or not before saving quiz
+    if(savedQuestionId === -1){
+      toast.error("Please Save Atleast One Question")
+      return ;
+    }
     if(prevIndex >= 0){
       const {questionName, options, answer} = questions[prevIndex].data
       if(questionName==="" || answer===""){

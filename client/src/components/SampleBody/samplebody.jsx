@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './samplebody.css';
-import { Link } from 'react-router-dom';  // Import Link from react-router-dom
+import { Link, useNavigate } from 'react-router-dom';  // Import Link from react-router-dom
+import { FaArrowRightLong } from "react-icons/fa6";
+import { setJoinedQuizId } from '../../redux/quizSlice';
+import {useDispatch} from 'react-redux'
 
 
 const BodySection = () => {
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const [quizId, setQuizId] = useState("")
+    
+    const joinQuizHandler = ()=>{
+        dispatch(setJoinedQuizId(quizId))
+        navigate('/join-quiz')
+    }
+
     return (
         <div className="body-section">
             <div className="hero-section">
@@ -12,7 +24,10 @@ const BodySection = () => {
                     <p>Test your knowledge with our exciting quiz. Click the button below to get started and see how much you know!</p>
                     <div className='button-section'>
                         <Link to='/quiz-create'><button className="start-button">Create Quiz</button></Link>
-                        <input placeholder='# Enter Code To Join Quiz' className='join-button' type="text" />
+                        <div className='join-quiz-field'>
+                            <input value={quizId} onChange={(e)=>setQuizId(e.target.value)} placeholder='# Enter Code To Join Quiz' className='join-input' type="text" />
+                            <FaArrowRightLong onClick={joinQuizHandler} className='join-button'/>
+                        </div>
                     </div>
                 </div>
                 <img className='hero-right' src="/quiz-page.avif" alt="" />

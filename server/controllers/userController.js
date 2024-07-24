@@ -80,9 +80,7 @@ const LoginUser = async (req, res) => {
 
         res.cookie("token", token, {maxAge:5*24*60*60*1000, httpOnly:true, sameSite:"strict"})
 
-        console.log('Cookies set:', req.cookies); // Log cookies here
-
-        res.json({ success: true, message: "Account Created Successfully", userId: user._id, token });
+        res.json({ success: true, message: "Logged In Successfully", userId: user._id, token });
 
 
     } catch (error) {
