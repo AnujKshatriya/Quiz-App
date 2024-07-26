@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import './Navbar.css';
+import { Link } from 'react-router-dom';
 // import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
 
 
 const Navbar = ({showLogin,showSignup}) => {
@@ -15,8 +17,8 @@ const Navbar = ({showLogin,showSignup}) => {
           </div>
           <div className="center">
             <ul className="center_list" >
-                <li onClick={()=>selectMenu(menu !== "home" ? "home" : "none")} className={menu==="home"?"active":"home"}>Home</li>
-                <li onClick={()=>selectMenu(menu !== "myquiz" ? "myquiz" : "none")} className={menu==="myquiz"?"active":"myquiz"}>Quiz</li>
+                <Link to='/'><li onClick={()=>selectMenu(menu !== "home" ? "home" : "none")} className={menu==="home"?"active":"home"}>Home</li></Link>
+                <Link to='/my-quiz'><li onClick={()=>selectMenu(menu !== "myquiz" ? "myquiz" : "none")} className={menu==="myquiz"?"active":"myquiz"}>MyQuiz</li></Link>
                 <li onClick={()=>selectMenu(menu !== "leaderboard" ? "leaderboard" : "none")} className={menu==="leaderboard"?"active":"leaderboard"}>Leaderboard</li>
                 <li onClick={()=>selectMenu(menu !== "about" ? "about" : "none")} className={menu==="about"?"active":"about"}>About</li>
                 {/* <li></li> */}

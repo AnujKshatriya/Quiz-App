@@ -141,5 +141,34 @@ const DeleteQuiz = async (req, res) => {
     }
 };
 
+const DisplayQuizList = async (req, res) => {
+  const userId = req.body.userId;
 
-export {CreateQuiz, CreateQuestion, EditQuestion, DeleteQuestion, DeleteQuiz}
+  console.log("Received request to fetch quizzes for user:", userId);
+
+  try {
+    // Attempt to find the user by ID
+    const user = await UserModel.findById(userId);
+
+    if (!user) {
+      console.error("User not found with ID:", userId);
+      return res.status(404).json({ success: false, message: "User not found" });
+    }
+
+    console.log("User found:", user);
+
+    // Fetch quizzes created by the user
+    const quizzes = await QuizModel.find({ _id: { $in: user.quizCreated } });
+
+    console.log("Quizzes found for user:", quizzes);
+
+    return res.status(200).json({ success: true, quizzes });
+  } catch (error) {
+    console.error("Error fetching quizzes:", error);
+    return res.status(500).json({ success: false, message: "Failed to fetch Quizzes", error: error.message });
+  }
+};
+  
+
+
+export {CreateQuiz, CreateQuestion, EditQuestion, DeleteQuestion, DeleteQuiz,DisplayQuizList}
