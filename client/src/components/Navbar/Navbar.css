@@ -34,6 +34,18 @@
     cursor: pointer;
 }
 
+.center_list li:link,
+.center_list li:visited {
+  text-decoration: none;
+  color: black;
+}
+
+a:-webkit-any-link {
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+    
+}
 
 .active{
     color: red;

@@ -7,6 +7,7 @@ import Navbar from './components/Navbar/Navbar'
 import Login from './components/Login/Login'
 import SignUp from './components/signup/Signup'
 import JoinQuiz from './pages/joinQuiz/JoinQuiz'
+import MyQuiz from './pages/MyQuiz/MyQuiz'
 
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/" element={<Home/>} />
           <Route path="/quiz-create" element={<QuizCreate />} />
           <Route path='/join-quiz' element={<JoinQuiz/>} />
+          <Route path="/my-quiz" element={<MyQuiz />} />
       </Routes>
       <Footer/>
     </div>
