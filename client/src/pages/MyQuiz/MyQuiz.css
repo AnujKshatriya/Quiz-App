@@ -1,12 +1,101 @@
-*{
-    margin: 100px;
+
+.quizdisplay{
     padding: 10px;
     box-sizing: border-box;
-}
 
+}
 .heading{
     margin: 20px;
     margin-top: 30px;
+    margin-left: 30px;
+    font-size: 20px;
 }
 
+.quiz_list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 30px;
+    gap: 30px;
+}
 
+h2{
+    margin-top: 5px;
+    font-size: 30px;
+}
+
+.quiz_item{
+    background-color: #fff;
+    border: 3px solid crimson;
+    box-shadow: black 3px 3px 3px;
+    border-radius: 25px;
+    width: 400px;
+    height: 435px;
+    display: flex;
+    flex-direction: column;
+    position: relative; 
+
+}
+
+.quiz_item img{
+    width: 100%;
+    height: 250px;
+    border-radius: 25px;
+    padding: 10px;
+}
+
+.deletebutton{
+    position: absolute;
+    top: 20px; 
+    right: 20px; 
+    background-color: crimson; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    padding: 5px 10px; 
+    cursor: pointer; 
+}
+
+.deletebutton:hover{
+    scale: 1.05;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+.buttons button{
+    padding: 8px;
+    border-radius: 10px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.shareId{
+    border: 2px rgb(196, 0, 0) solid;
+    background-color: rgb(196, 0, 0);
+    color: white;
+
+}
+
+.copyId{
+    border: 2px crimson solid;
+    background-color: #fff;
+    color: crimson;
+}
+
+.middle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

@@ -102,44 +102,65 @@ const DeleteQuestion = async(req,res) => {
 
 // DELETE QUIZ CODE
 const DeleteQuiz = async (req, res) => {
-    const { userId, quizId } = req.body;
+  const { userId, quizId } = req.body;
 
-    if (!userId || !quizId) {
-        return res.status(400).json({ success: false, message: "Please provide all details" });
+  if (!userId || !quizId) {
+    return res.status(400).json({ success: false, message: "Please provide all details" });
+  }
+
+  const session = await mongoose.startSession();
+  session.startTransaction();
+
+  try {
+    // Find the quiz and ensure it exists
+    const quiz = await QuizModel.findById(quizId).session(session);
+    if (!quiz) {
+      await session.abortTransaction();
+      session.endSession();
+      return res.status(404).json({ success: false, message: "Quiz not found" });
     }
 
-    const session = await mongoose.startSession();
-    session.startTransaction();
-
-    try {
-        const quiz = await QuizModel.findById(quizId)
-        quiz.questions.forEach(async (questionId)=>{
-            const deletedQuestion = await QuestionModel.findOneAndDelete(questionId)
-            if (!deletedQuestion) {
-                await session.abortTransaction();
-                session.endSession();
-                return res.status(404).json({ success: false, message: "Quiz not found" });
-            }
-        })
-
-        const deletedQuiz = await QuizModel.findByIdAndDelete(quizId, { session });
-        if (!deletedQuiz) {
-            await session.abortTransaction();
-            session.endSession();
-            return res.status(404).json({ success: false, message: "Quiz not found" });
+    // Delete all associated questions
+    for (const questionId of quiz.questions) {
+      try {
+        const deletedQuestion = await QuestionModel.findOneAndDelete({ _id: questionId }, { session });
+        if (!deletedQuestion) {
+          console.warn(`Question with ID ${questionId} not found.`);
+          // Continue deleting the rest of the questions even if one is missing
         }
-
-        await UserModel.findByIdAndUpdate(userId, { $pull: { quizCreated: quizId } }, { session });
-        await session.commitTransaction();
-        session.endSession();
-
-        return res.status(200).json({ success: true, message: "Quiz Deleted Successfully" });
-    } catch (error) {
-        await session.abortTransaction();
-        session.endSession();
-        return res.status(500).json({ success: false, message: "Quiz Deletion Failed", error: error.message });
+      } catch (err) {
+        console.error(`Error deleting question with ID ${questionId}:`, err);
+        // Optionally decide whether to continue or abort transaction
+      }
     }
+
+    // Delete the quiz
+    const deletedQuiz = await QuizModel.findByIdAndDelete(quizId, { session });
+    if (!deletedQuiz) {
+      await session.abortTransaction();
+      session.endSession();
+      return res.status(404).json({ success: false, message: "Quiz not found" });
+    }
+
+    // Update the user
+    await UserModel.findByIdAndUpdate(userId, { $pull: { quizCreated: quizId } }, { session });
+
+    // Commit the transaction
+    await session.commitTransaction();
+    session.endSession();
+
+    return res.status(200).json({ success: true, message: "Quiz Deleted Successfully" });
+  } catch (error) {
+    // Abort the transaction and end the session in case of an error
+    await session.abortTransaction();
+    session.endSession();
+    console.error("Error during quiz deletion:", error);
+    return res.status(500).json({ success: false, message: "Quiz Deletion Failed", error: error.message });
+  }
 };
+
+  
+  
 
 const DisplayQuizList = async (req, res) => {
   const userId = req.body.userId;
