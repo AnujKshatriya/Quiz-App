@@ -1,4 +1,3 @@
-// src/pages/MyQuiz/MyQuiz.jsx
 import React, { useEffect, useState } from "react";
 import "./MyQuiz.css";
 import axios from "axios";
@@ -7,14 +6,19 @@ import img from '../../assets/q10.png'
 import { MdOutlineContentCopy } from "react-icons/md";
 import { FaShareSquare } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { GoPlus } from "react-icons/go";
+import { MdOutlineQuiz } from "react-icons/md";
+
 
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const MyQuiz = () => {
   const [quizzes, setQuizzes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const isLogin = useSelector((state) => state.login.isLogin);
   const owner = useSelector((state) => state.user.authUser);
 
   console.log("Current User (Owner):", owner);
@@ -53,13 +57,13 @@ const MyQuiz = () => {
   };
 
   useEffect(() => {
-    // Only fetch quizzes if the owner is available
-    if (owner) {
+    if (isLogin && owner) {
       fetchQuiz();
     } else {
-      console.warn("No owner found, skipping fetch");
+      setLoading(false);
+      console.warn("User not logged in, skipping fetch");
     }
-  }, [owner]); // Add owner as a dependency
+  }, [isLogin, owner]); // Add isLogin and owner as dependencies
 
   const copyId = async(id) => {
     try {
@@ -95,6 +99,12 @@ const MyQuiz = () => {
     // Open the WhatsApp link in a new tab
     window.open(whatsappUrl, "_blank");
   };
+
+  const navigate = useNavigate()
+
+  const createNewQuiz = () =>{
+    navigate('/quiz-create')
+  }
 
   const deleteQuiz = async (id) => {
     try {
@@ -148,35 +158,50 @@ const MyQuiz = () => {
       </div>
 
       <div className="quiz_list">
-        {loading ? (
+        {!isLogin ? (
+          <p>Please log in first</p>
+        ) : loading ? (
           <p>Loading...</p>
         ) : error ? (
           <p>{error}</p>
-        ) : quizzes.length > 0 ? (
-          quizzes.map((quiz) => (
-            <div key={quiz._id} className="quiz_item">
-              <img src={img} alt="" />
+        ) : (
+          <>
+            {quizzes.map((quiz) => (
+              <div key={quiz._id} className="quiz_item">
+                
+                <div className="top_part">
 
-              <div className="deletebutton" onClick={() => deleteQuiz(quiz._id)}>
-                <MdDelete />
-              </div>
-
-              <div className="middle">
-                <h2>{quiz.name}</h2>
-                <p>Qn's - {quiz.questions.length}</p>
-                <div className="buttons">
-                  <button className="copyId" onClick={() => copyId(quiz._id)}>
-                    Copy Code <MdOutlineContentCopy />
-                  </button>
-                  <button className="shareId" onClick={() => shareId(quiz._id)}>
-                    Share Code <FaShareSquare />
-                  </button>
+                  <div className="icon__">
+                    <div className="icon2"><MdOutlineQuiz /></div>
+                  </div>
+                  <div className="deletebutton" onClick={() => deleteQuiz(quiz._id)}>
+                    <MdDelete />
+                  </div>
+                </div>
+                
+                <div className="middle">
+                  <h3>{quiz.name}</h3>
+                  <p>{quiz.questions.length} question(s)</p>
+                  <div className="buttons">
+                    <button className="copyId" onClick={() => copyId(quiz._id)}>
+                      Copy Code <MdOutlineContentCopy />
+                    </button>
+                    <button className="shareId" onClick={() => shareId(quiz._id)}>
+                      Share Code <FaShareSquare />
+                    </button>
+                  </div>
                 </div>
               </div>
+            ))}
+            <div className="new__quiz" onClick={createNewQuiz}>
+              <div className="icon">
+                <GoPlus />
+              </div>
+              <div className="text">
+                <p>Add a new Quiz</p>
+              </div>
             </div>
-          ))
-        ) : (
-          <p>No Quizzes Found</p>
+          </>
         )}
       </div>
 

@@ -17,6 +17,8 @@ const SignUp = ({showSignup, showLogin}) => {
     try {
       const res = await axios.post("/api/user/register",{username,email,password})
       if(res.data.success){
+
+        dispatch(setIsLogin(true))
         dispatch(setAuthUser(res.data.userId))
         toast.success(res.data.message)
         showSignup(false)

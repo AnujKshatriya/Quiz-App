@@ -13,7 +13,8 @@ const QuizCreate = () => {
   const [currentQuestionId, setCurrentQuestionId] = useState(1);
   const [quizName,setQuizName] = useState("")
   const [quizQuestions,setQuizQuestions] = useState([]);
-  const [participants, setParticipants] = useState([])
+  const [participants, setParticipants] = useState([]);
+  
   const [questions, setQuestions] = useState([{
     id: 0,
     data: {
@@ -22,8 +23,8 @@ const QuizCreate = () => {
       answer: ""
     }
   }]);
-  const [savedQuestionId, setSavedQuestionId] = useState()
 
+  const [savedQuestionId, setSavedQuestionId] = useState()
 
   //Add new Question
   const addNewQuestion = () => {

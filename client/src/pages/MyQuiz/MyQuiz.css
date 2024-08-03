@@ -1,101 +1,130 @@
-
-.quizdisplay{
+.quizdisplay {
     padding: 10px;
     box-sizing: border-box;
-
 }
-.heading{
+
+.heading {
     margin: 20px;
     margin-top: 30px;
     margin-left: 30px;
     font-size: 20px;
 }
 
-.quiz_list{
+.quiz_list {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     margin: 30px;
-    gap: 30px;
+    gap: 10px;
 }
 
-h2{
+h2 {
     margin-top: 5px;
     font-size: 30px;
 }
 
-.quiz_item{
-    background-color: #fff;
-    border: 3px solid crimson;
-    box-shadow: black 3px 3px 3px;
-    border-radius: 25px;
-    width: 400px;
-    height: 435px;
+.quiz_item {
+    position: relative; /* Make quiz_item a relative-positioned container */
+    border: 1px grey solid;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    border-radius: 10px;
+    height: 290px;
+}
+
+.icon__ {
+    background-color: rgb(192, 18, 18);
+    color: white;
+    height: 140px;
+    border-radius: 10px;
+    font-size: 50px;
+    width: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative; 
-
 }
 
-.quiz_item img{
-    width: 100%;
-    height: 250px;
-    border-radius: 25px;
-    padding: 10px;
-}
-
-.deletebutton{
+.deletebutton {
     position: absolute;
-    top: 20px; 
-    right: 20px; 
-    background-color: crimson; 
-    color: white; 
-    border: none; 
-    border-radius: 5px; 
-    padding: 5px 10px; 
-    cursor: pointer; 
+    top: 25px; /* Adjust as needed */
+    right: 25px; /* Adjust as needed */
+    color: white;
+    background-color: rgb(192, 18, 18);
+    width: 25px;
+    height: 25px;
+    border: 1px solid white;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;;
 }
 
 .deletebutton:hover{
     scale: 1.05;
 }
 
-.buttons{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 10px;
-}
-
-.buttons button{
-    padding: 8px;
-    border-radius: 10px;
-    width: 100%;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: bolder;
-}
-
-.shareId{
-    border: 2px rgb(196, 0, 0) solid;
-    background-color: rgb(196, 0, 0);
-    color: white;
-
-}
-
-.copyId{
-    border: 2px crimson solid;
-    background-color: #fff;
-    color: crimson;
-}
-
 .middle{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.new__quiz {
+    border: 1px grey solid;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 30px;
+    width: 250px;
+    border-radius: 10px;
+    height: 290px;
+    cursor: pointer;
+}
+
+.icon {
+    color: rgb(176, 175, 175);
+    font-size: 150px;
+}
+
+.text {
+    color: rgb(158, 157, 157);
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    gap: 5px;
+}
+
+.copyId{
+    padding: 3px;
+    background: white;
+    color: rgb(192, 18, 18);
+    border: 2px solid rgb(192, 18, 18);
+    border-radius: 5px;
+    padding-right: 12px;
+    padding-left: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    cursor: pointer;
+}
+.shareId{
+    padding: 3px;
+    color: white;
+    background: rgb(192, 18, 18);
+    border: 2px solid rgb(192, 18, 18);
+    border-radius: 5px;
+    padding-right: 12px;
+    padding-left: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    cursor: pointer;
 }

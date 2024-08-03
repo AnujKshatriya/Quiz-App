@@ -1,9 +1,34 @@
 import React from 'react';
 import './samplebody.css';
-import { Link } from 'react-router-dom';  // Import Link from react-router-dom
+import { useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const BodySection = () => {
+    const isLogin = useSelector((state) => state.login.isLogin);
+    const owner = useSelector((state) => state.user.authUser);
+    const navigate = useNavigate()
+
+    const redirect = () =>{
+        if(isLogin && owner){
+            navigate('/quiz-create')
+        }
+        else{
+            toast.error(`Please Login to create a quiz`, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              });
+        }
+    }
+
+
     return (
         <div className="body-section">
             <div className="hero-section">
@@ -11,7 +36,7 @@ const BodySection = () => {
                     <h1>Welcome to the Quizzer</h1>
                     <p>Test your knowledge with our exciting quiz. Click the button below to get started and see how much you know!</p>
                     <div className='button-section'>
-                        <Link to='/quiz-create'><button className="start-button">Create Quiz</button></Link>
+                        <button onClick={redirect} className="start-button">Create Quiz</button>
                         <input placeholder='# Enter Code To Join Quiz' className='join-button' type="text" />
                     </div>
                 </div>

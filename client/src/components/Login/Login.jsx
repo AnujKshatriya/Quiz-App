@@ -3,8 +3,9 @@ import './Login.css'
 import { MdOutlineCancel } from "react-icons/md";
 import axios from "axios"
 import toast from "react-hot-toast"
-import {useDispatch} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import { setAuthUser } from '../../redux/userSlice.js';
+import { setIsLogin } from '../../redux/userSlice.js';
 
 const Login = ({showLogin,showSignup}) => {
 
@@ -12,6 +13,8 @@ const Login = ({showLogin,showSignup}) => {
   const [password, setPassword] = useState("")
 
   const dispatch = useDispatch()
+
+
 
   const loginUser = async() => {
     try {
@@ -22,6 +25,8 @@ const Login = ({showLogin,showSignup}) => {
         const token = res.data.token; // Ensure the server sends this token
         localStorage.setItem('token', token);
         console.log('Token: ',token)
+
+        dispatch(setIsLogin(true))
         
         dispatch(setAuthUser(res.data.userId))
         toast.success(res.data.message)
