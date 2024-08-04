@@ -10,6 +10,9 @@ import SignUp from './components/signup/Signup';
 import MyQuiz from './pages/MyQuiz/MyQuiz';
 import { setIsLogin, setAuthUser } from './redux/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import JoinQuiz from './pages/joinQuiz/JoinQuiz';
+import Leaderboard from './pages/Leaderboard/Leaderboard';
+import About from './pages/About/About';
 
 const App = () => {
   const [login, showLogin] = useState(false);
@@ -18,7 +21,6 @@ const App = () => {
   const dispatch = useDispatch();
 
   const userId = useSelector((state) => state.user.authUser);
-
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -44,9 +46,12 @@ const App = () => {
       {signup ? <SignUp showLogin={showLogin} showSignup={showSignup} /> : ""}
       <Navbar showLogin={showLogin} showSignup={showSignup} />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/quiz-create" element={<QuizCreate />} />
-        <Route path="/my-quiz" element={<MyQuiz />} />
+          <Route path="/" element={<Home/>} />
+          <Route path="/quiz-create" element={<QuizCreate />} />
+          <Route path='/join-quiz' element={<JoinQuiz/>} />
+          <Route path="/my-quiz" element={<MyQuiz />} />
+          <Route path="/leaderboard" element={<Leaderboard/>} />
+          <Route path="/about" element={<About/>} />
       </Routes>
       <Footer />
     </div>

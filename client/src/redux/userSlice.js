@@ -1,4 +1,6 @@
-import { createSlice, combineReducers } from "@reduxjs/toolkit";
+// userSlice.js
+
+import { createSlice } from "@reduxjs/toolkit";
 
 // Check for a token in localStorage to initialize the isLogin state
 const token = localStorage.getItem('token');
@@ -30,9 +32,6 @@ const loginSlice = createSlice({
 export const { setAuthUser } = userSlice.actions;
 export const { setIsLogin } = loginSlice.actions;
 
-const rootReducer = combineReducers({
-    user: userSlice.reducer,
-    login: loginSlice.reducer,
-});
-
-export default rootReducer;
+// Export each slice's reducer separately
+export const userReducer = userSlice.reducer;
+export const loginReducer = loginSlice.reducer;

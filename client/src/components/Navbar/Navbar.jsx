@@ -44,8 +44,8 @@ const Navbar = ({showLogin,showSignup}) => {
             <ul className="center_list" >
                 <Link to='/'><li onClick={()=>selectMenu(menu !== "home" ? "home" : "none")} className={menu==="home"?"active":"home"}>Home</li></Link>
                 <Link to='/my-quiz'><li onClick={()=>selectMenu(menu !== "myquiz" ? "myquiz" : "none")} className={menu==="myquiz"?"active":"myquiz"}>MyQuiz</li></Link>
-                <li onClick={()=>selectMenu(menu !== "leaderboard" ? "leaderboard" : "none")} className={menu==="leaderboard"?"active":"leaderboard"}>Leaderboard</li>
-                <li onClick={()=>selectMenu(menu !== "about" ? "about" : "none")} className={menu==="about"?"active":"about"}>About</li>
+                <Link to='/leaderboard'><li onClick={()=>selectMenu(menu !== "leaderboard" ? "leaderboard" : "none")} className={menu==="leaderboard"?"active":"leaderboard"}>Leaderboard</li></Link>
+                <Link to='/about'><li onClick={()=>selectMenu(menu !== "about" ? "about" : "none")} className={menu==="about"?"active":"about"}>About</li></Link>
             </ul>
           </div>
 
