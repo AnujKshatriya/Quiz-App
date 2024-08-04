@@ -11,7 +11,6 @@ const quizSlice = createSlice({
         setJoinedQuizId : (state, action)=>{
             state.joinedQuizId = action.payload
         },
-        
         setJoinedQuizQuestions : (state,action)=>{
             state.joinedQuizQuestions = action.payload
         },
