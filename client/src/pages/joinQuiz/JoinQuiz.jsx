@@ -54,6 +54,7 @@ const JoinQuiz = () => {
     checkAnswerAndUpdateScore();
     pause(); // Pause the timer
     toast.info(`Quiz completed! Your final score is ${score + (selectedOption === correctAnswer ? 1 : 0)}.`);
+    console.log(`Your final score is ${score + (selectedOption === correctAnswer ? 1 : 0)}.`)
     console.log(`Time taken: ${minutes}:${seconds}`);
     navigate('/leaderboard');
   };
