@@ -1,15 +1,19 @@
 import React, { useState } from 'react'
 import './Navbar.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { setIsLogin } from '../../redux/userSlice.js';
 import { setAuthUser } from '../../redux/userSlice.js';
 import axios from 'axios';
+import { toast } from "react-toastify";
 
 const Navbar = ({showLogin,showSignup}) => {
 
     const [menu, selectMenu] = useState("None")
+    const navigate = useNavigate();
+    const isLogin = useSelector((state) => state.login.isLogin);
+    const owner = useSelector((state) => state.user.authUser);
 
     const isLoggedIn = useSelector((state)=> state.login.isLogin);
 
@@ -33,6 +37,23 @@ const Navbar = ({showLogin,showSignup}) => {
         console.error("Error during logout:", error.message);
       }
     };
+
+    const handleNavigate = (route,menuTitle,check)=>{
+      if((!isLogin && !owner) && !check){
+          toast.error(`Please Login First`, {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+        return;
+      }
+      selectMenu(menu !== menuTitle ? menuTitle : "none");
+      navigate(route);
+    }
     
   return (
     <div>
@@ -42,10 +63,10 @@ const Navbar = ({showLogin,showSignup}) => {
           </div>
           <div className="center">
             <ul className="center_list" >
-                <Link to='/'><li onClick={()=>selectMenu(menu !== "home" ? "home" : "none")} className={menu==="home"?"active":"home"}>Home</li></Link>
-                <Link to='/my-quiz'><li onClick={()=>selectMenu(menu !== "myquiz" ? "myquiz" : "none")} className={menu==="myquiz"?"active":"myquiz"}>MyQuiz</li></Link>
-                <Link to='/leaderboard'><li onClick={()=>selectMenu(menu !== "leaderboard" ? "leaderboard" : "none")} className={menu==="leaderboard"?"active":"leaderboard"}>Leaderboard</li></Link>
-                <Link to='/about'><li onClick={()=>selectMenu(menu !== "about" ? "about" : "none")} className={menu==="about"?"active":"about"}>About</li></Link>
+                <li onClick={()=>handleNavigate("/","home",true)} className={menu==="home"?"active":"home"}>Home</li>
+                <li onClick={()=>handleNavigate('/my-quiz',"myquiz",false)} className={menu==="myquiz"?"active":"myquiz"}>MyQuiz</li>
+                <li onClick={()=>handleNavigate('/leaderboard',"leaderboard", false)} className={menu==="leaderboard"?"active":"leaderboard"}>Leaderboard</li>
+                <li onClick={()=>handleNavigate("/about","about",true)} className={menu==="about"?"active":"about"}>About</li>
             </ul>
           </div>
 

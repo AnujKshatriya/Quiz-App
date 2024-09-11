@@ -12,55 +12,43 @@ const RegisterUser = async (req, res) => {
     const { username, email, password } = req.body;
 
     try {
-        console.log("Incoming request body:", req.body);
-
-        // Validate required fields
         if (!username || !email || !password) {
-            console.log("Missing required fields:", { username, email, password });
             return res.status(400).json({ success: false, message: "Please provide all required fields (username, email, password)." });
         }
 
         const check = await UserModel.findOne({ email });
         if (check) {
-            console.log("User already exists for email:", email);
             return res.status(400).json({ success: false, message: "User Already Exists" });
         }
 
         if (!validator.isEmail(email)) {
-            console.log("Invalid email format:", email);
             return res.status(400).json({ success: false, message: "Enter a Valid email" });
         }
 
         if (password.length < 8) {
-            console.log("Weak password:", password);
             return res.status(400).json({ success: false, message: "Enter a Strong Password" });
         }
 
-        // Hash Password
         const salt = await bcrypt.genSalt(10);
         const hash = await bcrypt.hash(password, salt);
 
         const newUser = new UserModel({
-            username: username,
-            email: email,
+            username,
+            email,
             password: hash,
         });
 
         const user = await newUser.save();
-
         const token = createToken(user._id);
-        
-        res.cookie("token", token, {maxAge:5*24*60*60*1000, httpOnly:false,path: '/', sameSite:"none"})
 
-        res.json({ success: true, message : "Account Created Successfully", userId : user._id });
+        // Setting the token in the cookie
+        res.cookie("token", token, { maxAge: 5 * 24 * 60 * 60 * 1000, httpOnly: true, sameSite: "strict" });
 
+        res.json({ success: true, message: "Account Created Successfully", userId: user._id });
     } catch (error) {
-        console.error("Error registering user:", error);
         res.status(500).json({ success: false, message: "Error registering user" });
     }
 };
-
-
 // Logging a Register
 const LoginUser = async (req, res) => {
     const { email, password } = req.body;

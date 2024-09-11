@@ -31,7 +31,7 @@ const JoinQuiz = () => {
   console.log('Correct answer:', correctAnswer);
 
   const checkAnswerAndUpdateScore = () => {
-    if (selectedOption === correctAnswer) {
+    if (selectedOption.toLowerCase() === correctAnswer.toLowerCase()) {
       setScore((prevScore) => prevScore + 1);
     }
   };
@@ -53,8 +53,10 @@ const JoinQuiz = () => {
   const submitHandler = () => {
     checkAnswerAndUpdateScore();
     pause(); // Pause the timer
-    toast.info(`Quiz completed! Your final score is ${score + (selectedOption === correctAnswer ? 1 : 0)}.`);
-    console.log(`Your final score is ${score + (selectedOption === correctAnswer ? 1 : 0)}.`)
+    const finalScore = score + (selectedOption && selectedOption.toLowerCase() === correctAnswer.toLowerCase() ? 1 : 0);
+
+    // toast.info(`Quiz completed! Your final score is ${score + (selectedOption === correctAnswer ? 1 : 0)}.`);
+    console.log(`Your final score is ${finalScore}.`)
     console.log(`Time taken: ${minutes}:${seconds}`);
     navigate('/leaderboard');
   };
@@ -84,7 +86,7 @@ const JoinQuiz = () => {
               {currentQuestionIndex + 1}. {question.questionName}
             </div>
             <div className="options__">
-              {question.option.map((opt, index) => (
+              {question?.option?.map((opt, index) => (
                 <div
                   key={index}
                   className={`option__ ${selectedOption === String.fromCharCode(65 + index) ? 'active__' : ''}`}
