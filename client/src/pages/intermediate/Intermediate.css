@@ -1,0 +1,65 @@
+/* IntermediatePage.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.intermediate__background {
+  background-color: #fcd9d9;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.intermediate__content {
+  background-color: white;
+  padding: 40px; /* Increased padding for more space */
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 600px; /* Increased max-width for larger box */
+}
+
+.result__header {
+  font-size: 24px;
+  font-weight: 600;
+  color: #381f1f;
+  margin-bottom: 20px;
+}
+
+.result__text {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #2c2c6c;
+}
+
+/* Updated congratulations text */
+.result__text span {
+  font-weight: bold;
+  color: #fa5757; /* Intense red color */
+}
+
+.leaderboard__button {
+  background-color: #fa5757; /* Reddish color */
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.leaderboard__button:hover {
+  background-color: #381f1f; /* Darker shade of red */
+  transform: scale(1.05);
+}

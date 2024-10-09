@@ -14,6 +14,7 @@ import Leaderboard from './pages/Leaderboard/Leaderboard';
 import About from './pages/About/About';
 import { ToastContainer } from 'react-toastify';
 import SocketLeaderboard from './pages/SocketLeaderboard/SocketLeaderboard';
+import IntermediatePage from './pages/intermediate/Intermediate.jsx';
 
 const App = () => {
   const [login, showLogin] = useState(false);
@@ -31,7 +32,8 @@ const App = () => {
     }
   }, [dispatch, userId]);
 
-  const shouldShowNavbarAndFooter = !location.pathname.includes('/join-quiz'); // Adjust the condition as needed
+  // Adjust the condition to exclude both IntermediatePage and JoinQuiz
+  const shouldShowNavbarAndFooter = !location.pathname.includes('/join-quiz') && !location.pathname.includes('/intermediate');
 
   return (
     <div>
@@ -39,17 +41,17 @@ const App = () => {
       {signup && <SignUp showLogin={showLogin} showSignup={showSignup} />}
       {shouldShowNavbarAndFooter && <Navbar showLogin={showLogin} showSignup={showSignup} />}
       <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/quiz-create" element={<QuizCreate />} />
-          <Route path="/join-quiz" element={<JoinQuiz />} />
-          <Route path="/my-quiz" element={<MyQuiz />} />
-          <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/:quizid/leaderboard" element={<SocketLeaderboard />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/quiz-create" element={<QuizCreate />} />
+        <Route path="/join-quiz" element={<JoinQuiz />} />
+        <Route path="/my-quiz" element={<MyQuiz />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/intermediate" element={<IntermediatePage />} />
+        <Route path="/:quizid/leaderboard" element={<SocketLeaderboard />} />
       </Routes>
       {shouldShowNavbarAndFooter && <Footer />}
       <ToastContainer />
-      
     </div>
   );
 };
