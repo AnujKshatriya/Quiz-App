@@ -18,6 +18,10 @@ const leaderboardSchema = mongoose.Schema({
                 type : Number,
                 required : true
             },
+            time : {
+                type : Number,
+                required : true
+            }
         }
     ]
 })

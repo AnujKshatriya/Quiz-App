@@ -9,12 +9,9 @@ import { useStopwatch } from 'react-timer-hook';
 
 const JoinQuiz = () => {
   SocketConnection();
-
+  const { joinedQuizId } = useSelector((store) => store.quiz);
   const questions = useSelector((state) => state.quiz.joinedQuizQuestions) || [];
   const error = useSelector((state) => state.quiz.quizError);
-
-  console.log('Loaded questions:', questions);
-  console.log('Quiz error:', error);
 
   const total_questions = questions.length;
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -27,8 +24,8 @@ const JoinQuiz = () => {
   const question = questions[currentQuestionIndex] || {};
   const correctAnswer = question.answer;
 
-  console.log('Current question:', question);
-  console.log('Correct answer:', correctAnswer);
+  // console.log('Current question:', question);
+  // console.log('Correct answer:', correctAnswer);
 
   const checkAnswerAndUpdateScore = () => {
     if (selectedOption.toLowerCase() === correctAnswer.toLowerCase()) {
@@ -56,9 +53,10 @@ const JoinQuiz = () => {
     const finalScore = score + (selectedOption && selectedOption.toLowerCase() === correctAnswer.toLowerCase() ? 1 : 0);
 
     // toast.info(`Quiz completed! Your final score is ${score + (selectedOption === correctAnswer ? 1 : 0)}.`);
-    console.log(`Your final score is ${finalScore}.`)
+    console.log(`Your final score is ${finalScore}. and setscore value is ${score}`)
     console.log(`Time taken: ${minutes}:${seconds}`);
-    navigate('/leaderboard');
+    const time = parseInt(minutes)*60 + parseInt(seconds);
+    navigate(`/${joinedQuizId}/leaderboard`, {state : { finalScore, time }});
   };
 
   // Format the elapsed time as hours:minutes:seconds

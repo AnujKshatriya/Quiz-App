@@ -3,6 +3,10 @@ import io  from 'socket.io-client'
 import {useSelector, useDispatch} from 'react-redux'
 import { setJoinedQuizQuestions, setQuizError } from '../redux/quizSlice.js'
 
+export const socket = io("http://localhost:3000", {
+  transports: ['websocket'],
+});
+
 const SocketConnection = () => {
     const dispatch = useDispatch()
     const {authUser} = useSelector(store=>store.user)
@@ -11,10 +15,6 @@ const SocketConnection = () => {
     useEffect(()=>{
         if (authUser && joinedQuizId) {
             console.log("user -> ", authUser, " id -> ", joinedQuizId)
-
-            const socket = io("http://localhost:3000", {
-              transports: ['websocket', 'polling'],
-            });
       
             socket.emit('joinRoom', { joinedQuizId, authUser });
 
@@ -32,13 +32,11 @@ const SocketConnection = () => {
                 dispatch(setQuizError(error))
                 console.log(error)
             })
-
-            socket.on('message', (message) => {
-              console.log(message);
-            });
       
             return () => {
-              socket.close();
+              socket.off('getQuizQuestions');
+              socket.off('error')
+              socket.off('joinRoom')
             };
           }
         }, [authUser, joinedQuizId]);

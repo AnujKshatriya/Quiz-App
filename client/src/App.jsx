@@ -13,6 +13,7 @@ import JoinQuiz from './pages/joinQuiz/JoinQuiz';
 import Leaderboard from './pages/Leaderboard/Leaderboard';
 import About from './pages/About/About';
 import { ToastContainer } from 'react-toastify';
+import SocketLeaderboard from './pages/SocketLeaderboard/SocketLeaderboard';
 
 const App = () => {
   const [login, showLogin] = useState(false);
@@ -44,6 +45,7 @@ const App = () => {
           <Route path="/my-quiz" element={<MyQuiz />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/about" element={<About />} />
+          <Route path="/:quizid/leaderboard" element={<SocketLeaderboard />} />
       </Routes>
       {shouldShowNavbarAndFooter && <Footer />}
       <ToastContainer />

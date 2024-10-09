@@ -3,9 +3,10 @@ import React from 'react'
 const Leaderboard = () => {
   return (
     <div>
-      hELLO wORLd
+      User's All Quiz...
     </div>
   )
 }
 
 export default Leaderboard
+

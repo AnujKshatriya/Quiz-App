@@ -3,6 +3,8 @@ import {Server} from 'socket.io'
 import http from 'http'
 import UserModel from '../models/userModel.js'
 import QuizModel from '../models/quizModel.js'
+import LeaderboardModel from '../models/leaderboardModel.js'
+import { addToLeaderboard, getLeaderboard } from '../redis/roomLeaderboard.js'
 
 const app = express()
 const server = http.createServer(app)
@@ -47,6 +49,35 @@ io.on("connection", (socket)=>{
 
     })
 
+    socket.on('updateScore', async ({ joinedQuizId, authUser, score, time }) => {
+        try {
+          console.log("Attempting to update MongoDB leaderboard");
+          
+          // Update MongoDB leaderboard
+          const result = await LeaderboardModel.findOneAndUpdate(
+            { quizInfo: joinedQuizId },
+            { $push: { participants: { userId: authUser, score, time } } },
+            { upsert: true, new: true }
+          );
+      
+          console.log("MongoDB leaderboard updated:", result);
+      
+          // Continue with Redis and the rest of the process
+          await addToLeaderboard(joinedQuizId, authUser, score, time);
+          console.log("added to leaderboard");
+      
+          const leaderboard = await getLeaderboard(joinedQuizId);
+          console.log("got leaderboard");
+      
+          io.to(joinedQuizId).emit('updateRankings', leaderboard);
+        } 
+        catch (error) {
+          console.log("Error updating leaderboard:", error);
+          socket.emit('error', 'An error occurred while updating the leaderboard');
+        }
+      });
+      
+      
     socket.on("disconnect",()=>{
         // console.log("user disconnected", socket.id)
     })
