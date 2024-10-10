@@ -1,113 +1,157 @@
+/* JoinQuiz.css */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+/* Importing the Poppins font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-
-.main__background{
-    background:linear-gradient(45deg, rgb(202, 181, 181), rgb(210, 6, 6));
-    height: 100vh;  
-
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    background-attachment: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-.top__part{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-    font-size: 50px;
-    font-weight: bold;
-    color: white;
-    padding-top: 120px;
+/* Main background styling */
+.main__background {
+  background-color: #fef6f6; /* Light background for a softer appearance */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
-.timer{
-    transform: translateX(450px);
-    font-family: 'whiteto Mono', monospace;
-    color: blac10;
+/* Top part containing quiz name and timer */
+.top__part {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 20px;
 }
 
-.quiz__body{
-    width: 80%;
-    height: 65%;
-    padding: 100px;
-    margin: 60px;
-    margin-top: 40px;
-    margin-bottom: 250px;
-    background-color: white;
-    border-radius: 50px;
+.quiz__name {
+  font-size: 28px;
+  font-weight: 700; /* Increased font weight for boldness */
+  color: #a00000; /* More intense red */
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-.question__{
-    font-size: 35px;
-    font-weight: bold;
+.timer {
+  font-size: 18px;
+  background-color: #ff7043; /* Reddish orange */
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
 }
 
-.options__{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
+/* Quiz body styling */
+.quiz__body {
+  background-color: white;
+  padding: 35px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 900px;
 }
 
-.option__{
-    border: 1px grey solid;
-    border-radius: 4px;
-    padding: 10px;
-    cursor: pointer;
+/* Question styling */
+.question__ {
+  font-size: 22px;
+  color: #2c2c6c; /* Deep blue for better contrast */
+  margin-bottom: 25px;
+  font-weight: 600;
 }
 
-.option__:hover{
-    transform: scale(1.01);
+/* Options styling */
+.options__ {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.active__{
-    background-color: rgb(204, 38, 38);
-    color: white;
-    text-decoration: none;
+.option__ {
+  background-color: #f0f0f0; /* Neutral color for options */
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  color: #1f1f38;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
 }
 
-.buttons___{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 55px;
+.option__.active__ {
+  background-color: #ff5252; /* Active option color */
+  color: white;
+  transform: scale(1.05);
 }
 
-.buttons___ button{
-    padding: 10px;
-    padding-left: 35px;
-    padding-right: 35px;
-    font-weight: bold;
-    font-size: 25px;
-    cursor: pointer;
-    background-color: rgb(200, 41, 41);
-    border: none;
-    color: white;
-    border-radius: 10px;
+.option__:hover {
+  background-color: #ff8a65; /* Darker hover effect */
+  color: white;
 }
 
-
-.minutes{
-    color: rgb(177, 81, 81);    
-    background-color: white;
-    border-radius: 10px;
-    padding: 5px;
-    font-size: 38px;
-    font-family: 'Roboto Mono', monospace;
+/* Button styling */
+.buttons___ {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
 }
 
-.seconds{
-    color: rgb(178, 36, 36);
-    background-color: white;
-    border-radius: 10px;
-    padding: 5px;
-    font-size: 38px;
-    font-family: 'Roboto Mono', monospace;
+.buttons___ button {
+  background-color: #ff7043; /* Reddish orange */
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.buttons___ button:hover {
+  background-color: #d84315; /* Darker shade on hover */
+  transform: scale(1.05);
+}
+
+.buttons___ button i {
+  margin-left: 8px;
+}
+
+/* Icon styling */
+.icon {
+  margin-left: 5px;
+  font-size: 18px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .quiz__body {
+    padding: 20px;
+  }
+
+  .quiz__name {
+    font-size: 22px;
+  }
+
+  .question__ {
+    font-size: 18px;
+  }
+
+  .buttons___ button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
 }
