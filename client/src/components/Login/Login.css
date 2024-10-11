@@ -1,3 +1,4 @@
+/* Overlay for the login modal */
 .overlay {
     position: fixed; /* Cover full viewport */
     top: 0;
@@ -5,7 +6,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    backdrop-filter: blur(2px); /* Background blur effect */
+    backdrop-filter: blur(4px); /* Slightly stronger blur effect */
     display: flex;
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
@@ -14,30 +15,39 @@
 
 /* Login form container */
 .login_form {
-    background-color: #fff;
+    background-color: #ffffff; /* White background for form */
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly darker shadow */
     padding: 20px;
-    width: 350px; /* You can adjust the width as needed */
+    width: 90%; /* Responsive width */
+    max-width: 450px; /* Maximum width for larger screens */
+    transition: transform 0.3s ease; /* Animation for entrance */
+    transform: translateY(-10px); /* Slight upward movement */
 }
 
+/* Container for flex items */
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/* Header part of the form */
 .head-part {
     margin-bottom: 20px;
     width: 100%;
     position: relative;
 }
-.head-part h1{
+
+/* Header title styles */
+.head-part h1 {
     text-align: center;
     font-weight: 500;
-    color: red;
+    color: rgb(204, 38, 38); /* Red color matching navbar */
 }
-.close-icon{
+
+/* Close icon styles */
+.close-icon {
     font-size: 35px;
     cursor: pointer;
     position: absolute;
@@ -46,59 +56,112 @@
     color: rgb(80, 76, 76);
 }
 
-.head_part h1 {
+/* Clear margin for header */
+.head-part h1 {
     margin: 0;
 }
-.form_items{
+
+/* Form items styles */
+.form_items {
     margin-bottom: 10px;
 }
+
+/* Input field styles */
 .form_items input {
     width: 100%;
-    padding: 10px;
+    padding: 12px; /* Increased padding for better touch targets */
     margin: 10px 0;
     border: 1px solid #c6c2c2;
     border-radius: 5px;
-    outline-color: #928c8c;
+    outline-color: rgb(204, 38, 38); /* Outline color matching navbar */
+    transition: border-color 0.3s; /* Transition for focus effect */
 }
 
+/* Input field focus effect */
+.form_items input:focus {
+    border-color: rgb(204, 38, 38); /* Change border color on focus */
+}
+
+/* Button container styles */
 .buttonforlogin {
     width: 100%;
 }
 
+/* Login button styles */
 .login-button {
     width: 100%;
-    padding: 10px;
-    background-color: white; 
-    border: 1px solid red;
-    color: red;
+    padding: 12px; /* Increased padding */
+    background-color: white; /* White button background */
+    border: 1px solid rgb(204, 38, 38); /* Red border matching navbar */
+    color: rgb(204, 38, 38); /* Red text color */
     border-radius: 5px;
     cursor: pointer;
     margin-bottom: 10px;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
+/* Login button hover effect */
 .login-button:hover {
-    color : white;
-    background-color: red;
+    color: white; /* White text on hover */
+    background-color: rgb(204, 38, 38); /* Red background on hover */
+    transform: scale(1.05); /* Scale effect on hover */
 }
 
+/* Permission text styles */
 .permission {
     display: flex;
     align-items: center;
     margin-top: 10px;
 }
 
+/* Checkbox margin */
 .permission input[type="checkbox"] {
     margin-right: 10px;
 }
 
+/* Base text styles */
 .base {
     margin-top: 20px;
 }
-.base p{
+
+/* Base paragraph styles */
+.base p {
     text-align: center;
 }
+
+/* Base span styles */
 .base span {
     margin-left: 10px;
     color: blue;
     cursor: pointer;
+    transition: color 0.3s; /* Smooth transition */
+}
+
+/* Base span hover effect */
+.base span:hover {
+    color: darkblue; /* Darker color on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .login_form {
+        padding: 15px; /* Less padding on small screens */
+        width: 90%; /* Full width for small screens */
+    }
+
+    .head-part h1 {
+        font-size: 24px; /* Smaller font size for header */
+    }
+
+    .login-button {
+        font-size: 16px; /* Smaller font size for button */
+    }
+
+    .form_items input {
+        font-size: 14px; /* Smaller font size for input fields */
+    }
+
+    .base p {
+        font-size: 14px; /* Smaller font size for base text */
+    }
 }

@@ -1,42 +1,74 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-
 .total_footer {
-    position: relative;
-    background-color: rgb(43, 42, 42);
-    color: white;
-    padding: 20px;
-    font-family: "Outfit", sans-serif;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+    background-color: #1c1c1c; /* Dark background */
+    color: white; /* White text for contrast */
+    padding: 20px; /* Padding for footer */
 }
 
 .footer {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 20px;
+    display: flex;
+    justify-content: space-between; /* Space between sections */
+    flex-wrap: wrap; /* Wrap content on smaller screens */
 }
 
 .left, .center_, .right_ {
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex: 1; /* Flex grow for equal spacing */
+    margin: 10px; /* Margin for spacing between sections */
 }
 
-.left ul, .center_ ul, .right_ ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 10px 0;
+.left h1, .center_ h1, .right_ h1 {
+    color: #d11717; /* Red color for headings */
 }
 
-.left ul {
+.social {
     display: flex;
-    gap: 10px;
+    list-style: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+}
+
+.social li {
+    margin-right: 15px; /* Space between social icons */
+}
+
+.social img {
+    width: 30px; /* Size of social icons */
+    transition: transform 0.3s; /* Smooth hover effect */
+}
+
+.social img:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+.item_center {
+    list-style: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+}
+
+.item_center li {
+    margin: 5px 0; /* Space between list items */
 }
 
 .end {
-    display: flex;
-    justify-content: center; 
-    align-items: center;     
-    height: 20px;            
-    margin-top: 20px;
+    text-align: center; /* Center the copyright text */
+    margin-top: 20px; /* Margin for spacing */
+}
+
+hr {
+    border: 1px solid #ff4d4d; /* Red line for the separator */
+    margin: 20px 0; /* Margin for spacing */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column; /* Stack sections on small screens */
+        align-items: center; /* Center items */
+    }
+
+    .left, .center_, .right_ {
+        text-align: center; /* Center text for small screens */
+    }
+
+    .social {
+        justify-content: center; /* Center social icons */
+    }
 }

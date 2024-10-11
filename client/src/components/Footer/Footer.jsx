@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import './Footer.css';
 import images from '../../assets/assets.js';
 
@@ -8,11 +8,12 @@ const Footer = () => {
       <div className='footer'>
         <div className='left'>
           <h1>Quizz</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum distinctio enim corrupti neque doloribus fuga nesciunt perferendis? Adipisci voluptate nostrum iusto modi qui consectetur facere. Error mollitia facilis obcaecati voluptatem!</p>
+          <p>Quizz is your go-to platform for interactive quizzes across various topics. Whether you want to test your knowledge, learn something new, or just have fun, we have something for everyone!</p>
+          <p>Join our community to explore engaging quizzes, track your progress, and compete with friends.</p>
           <ul className="social">
-            <li><img className='image1' src={images.facebook_icon} /></li>
-            <li><img src={images.linkedin_icon} /></li>
-            <li><img src={images.twitter_icon}  /></li>
+            <li><img className='image1' src={images.facebook_icon} alt="Facebook" /></li>
+            <li><img src={images.linkedin_icon} alt="LinkedIn" /></li>
+            <li><img src={images.twitter_icon} alt="Twitter" /></li>
           </ul>
         </div>
 
@@ -22,6 +23,7 @@ const Footer = () => {
             <li>Home</li>
             <li>About Us</li>
             <li>Privacy Policy</li>
+            <li>Contact Us</li>
           </ul>
         </div>
 
@@ -29,19 +31,18 @@ const Footer = () => {
           <h1>Get in Touch</h1>
           <ul>
             <li>+1-212-456-7890</li>
-            <li>quizz@gmail.co</li>
-
+            <li>quizz@gmail.com</li>
           </ul>
         </div>
       </div>
       <hr />
       <div className='end'>
         <div className="ending">
-          Copyright &copy; Quizz.com
+          Copyright &copy; {new Date().getFullYear()} Quizz.com
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Footer
+export default Footer;
