@@ -1,0 +1,40 @@
+.about-container {
+    padding: 30px;
+    
+    background-color: #ececec; /* Light background */
+    border-radius: 8px; /* Rounded corners */
+    max-width: 800px; /* Max width for better readability */
+    margin: 100px auto; /* Center the container */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .about-title {
+    font-size: 2.5rem;
+    color: #1f1f38; /* Dark color */
+    text-align: center; /* Center title */
+    margin-bottom: 10px;
+  }
+  
+  .about-description {
+    font-size: 1.20rem;
+    color: #333; /* Darker text for better contrast */
+    margin-bottom: 20px; /* Spacing below paragraphs */
+    line-height: 1.5; /* Improved line spacing */
+  }
+  
+  .about-section-title {
+    font-size: 1.8rem;
+    color: #eb1313; /* Accent color */
+    margin-top: 20px; /* Spacing above section titles */
+  }
+  
+  .about-features-list {
+    list-style-type: disc; /* Bulleted list */
+    padding-left: 20px; /* Indentation for list */
+    font-size: 1.20rem;
+  }
+  
+  .about-features-list li {
+    margin-bottom: 10px; /* Spacing between list items */
+  }
+  

@@ -1,92 +1,107 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap'); */
-.navbar{
-    position: relative;
+/* Navbar.css */
+.navbar {
     display: flex;
     justify-content: space-between;
-    padding: 10px 5vw;
-    background-color: white;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
-    z-index: 10;
-    /* font-family: "Outfit",sans-serif; */
+    align-items: center;
+    padding: 15px 30px; /* Padding for a spacious layout */
+    background-color: rgb(204, 38, 38); /* Reddish background */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+    transition: background-color 0.3s ease; /* Smooth transition */
 }
 
-.title{
-    cursor: pointer;
+.left .title {
+    color: #ffffff; /* White color for title */
+    font-size: 30px; /* Increased font size */
+    font-family: 'Poppins', sans-serif;
+    transition: transform 0.3s; /* Animation on hover */
 }
 
-.center{
+.left .title:hover {
+    transform: scale(1.1); /* Scale effect on hover */
+}
+
+.center {
+    flex-grow: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
-    font-size: 22px;
-    
 }
 
-.center_list{
-    display: flex;
+.center_list {
     list-style-type: none;
-    gap: 30px;
-    align-items: center;
-    justify-content: center;
-}
-
-.center_list li{
-    cursor: pointer;
-}
-
-.center_list li:link,
-.center_list li:visited {
-  text-decoration: none;
-  color: black;
-}
-
-a:-webkit-any-link {
-    color: black;
-    cursor: pointer;
-    text-decoration: none;
-    
-}
-
-.active{
-    color: red;
-    text-decoration: underline;
-    
-}
-.right{
+    padding: 0;
+    margin: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-right: 10px;
-
-
+    gap: 40px; /* Increased space between items */
 }
 
-.right button{
-    padding: 10px 15px 10px 15px;
-    font-size: 15px;
-    font: bolder;
-    border-radius: 50px;
+.center_list li {
     cursor: pointer;
+    padding: 15px 25px; /* Increased padding for list items */
+    font-size: 20px; /* Font size for list items */
+    border-radius: 5px;
+    color: #ffffff; /* White text */
+    transition: background-color 0.3s, transform 0.2s; /* Animation for background and scaling */
 }
 
-.right button:hover{
-    transform: scale(1.05);
+.center_list li.active,
+.center_list li:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent white for hover/active */
+    transform: scale(1.05); /* Scale effect on hover */
 }
 
-.login{
-    border: 2px solid red;
-    color: red;
-    background-color: white;
+.right {
+    display: flex;
+    gap: 20px; /* Space between buttons */
+}
+
+button {
+    padding: 15px 30px; /* Increased padding for buttons */
+    border: 2px solid white;
     margin-right: 10px;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    font-size: 18px; /* Font size for buttons */
+    transition: background-color 0.3s, transform 0.2s; /* Animation for background and scale */
 }
 
-
-.SignUp{
-    border: 2px solid red;
-    background-color: red;
-    color: white;
-
+button.login {
+    background-color: #ffffff; /* White background for login */
+    color: rgb(204, 38, 38); /* Red text */
+    border: 2px solid white; /* Red border */
 }
 
+button.SignUp {
+    background-color: rgba(255, 255, 255, 0.8); /* Light white background for signup */
+    color: rgb(204, 38, 38); /* Red text */
+    border: 2px solid white; /* Red border */
+}
 
+button:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+}
+
+button.login:hover {
+    background-color: rgb(204, 38, 38); /* Red background on hover */
+    color: #ffffff; /* White text on hover */
+}
+
+button.SignUp:hover {
+    background-color: rgb(204, 38, 38); /* Red background on hover */
+    color: #ffffff; /* White text on hover */
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Stack items vertically on small screens */
+    }
+
+    .center_list {
+        flex-direction: column; /* Stack list items vertically */
+        align-items: center; /* Center align items */
+    }
+
+    .right {
+        flex-direction: column; /* Stack buttons vertically */
+    }
+}
