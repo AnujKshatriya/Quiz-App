@@ -13,9 +13,12 @@ redis.on('error', (err) => {
     console.error('Redis connection error:', err);
 });
 
+
+
 // Add or Update Participant in Leaderboard
 export const addToLeaderboard = async (quizId, userId, score, time) => {
-  const compositeScore = `${score}.${999999 - time}`; // Ensures lower time ranks higher for equal scores
+  const compositeTime = (999999 - time).toString().padEnd(6, '0'); // Ensure six digits with trailing zeros
+  const compositeScore = `${score}.${compositeTime}`; 
   await redis.zadd(`quiz:${quizId}:leaderboard`, compositeScore, userId);
 };
 
@@ -27,10 +30,11 @@ export const getLeaderboard = async (quizId) => {
   for (let i = 0; i < leaderboardData.length; i += 2) {
     const userId = leaderboardData[i];
     const score = leaderboardData[i + 1].split('.')[0]; // Extract the score from compositeScore
-    const time = 999999 - parseInt(leaderboardData[i + 1].split('.')[1]); // Retrieve original time
-
+    const timeComponent = leaderboardData[i + 1].split('.')[1].padEnd(6, '0'); // Ensure six digits with trailing zeros
+    const time = 999999 - parseInt(timeComponent); // Retrieve original time
     leaderboard.push({ userId, score: parseInt(score), time });
   }
   
   return leaderboard;
 };
+

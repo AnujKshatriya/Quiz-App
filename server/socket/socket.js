@@ -60,14 +60,10 @@ io.on("connection", (socket)=>{
             { upsert: true, new: true }
           );
       
-          console.log("MongoDB leaderboard updated:", result);
-      
           // Continue with Redis and the rest of the process
           await addToLeaderboard(joinedQuizId, authUser, score, time);
-          console.log("added to leaderboard");
       
           const leaderboard = await getLeaderboard(joinedQuizId);
-          console.log("got leaderboard");
       
           io.to(joinedQuizId).emit('updateRankings', leaderboard);
         } 
@@ -76,7 +72,6 @@ io.on("connection", (socket)=>{
           socket.emit('error', 'An error occurred while updating the leaderboard');
         }
       });
-      
       
     socket.on("disconnect",()=>{
         // console.log("user disconnected", socket.id)
