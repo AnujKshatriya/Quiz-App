@@ -14,6 +14,10 @@ const leaderboardSchema = mongoose.Schema({
                 ref : "user",
                 required : true 
             },
+            username : {
+                type : String,
+                required : true
+            },
             score : {
                 type : Number,
                 required : true

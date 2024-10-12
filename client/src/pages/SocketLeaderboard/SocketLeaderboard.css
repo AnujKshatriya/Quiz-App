@@ -1,0 +1,93 @@
+/* Container */
+.leaderboard-container {
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: black;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    color: white;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Title */
+  .leaderboard-title {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #fff;
+    border-bottom: 4px solid red;
+    padding-bottom: 10px;
+    letter-spacing: 1.5px;
+  }
+  
+  /* Leaderboard Table */
+  .leaderboard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .leaderboard-header,
+  .leaderboard-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .leaderboard-header {
+    background-color: #ff0000;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  
+  .leaderboard-row {
+    background-color: #333;
+    color: white;
+    margin: 5px 0;
+  }
+  
+  .leaderboard-row.even {
+    background-color: #444;
+  }
+  
+  .leaderboard-row.odd {
+    background-color: #555;
+  }
+  
+  .leaderboard-row:hover {
+    background-color: #f1f2f6;
+    color:#0d0d0d;
+    cursor: pointer;
+  }
+  
+  /* Columns */
+  .leaderboard-rank,
+  .leaderboard-username,
+  .leaderboard-score,
+  .leaderboard-time {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .leaderboard-username {
+    flex: 2; /* Give more space to the username */
+  }
+  
+  .leaderboard-score {
+    font-weight: bold;
+  }
+  
+  /* Loading & No Data */
+  .loading, .no-data {
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 20px;
+    color: white;
+  }
+  

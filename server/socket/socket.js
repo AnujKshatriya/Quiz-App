@@ -54,14 +54,17 @@ io.on("connection", (socket)=>{
           console.log("Attempting to update MongoDB leaderboard");
           
           // Update MongoDB leaderboard
+          const user  = await UserModel.findById(authUser);
+          const username = user.username;
+
           const result = await LeaderboardModel.findOneAndUpdate(
             { quizInfo: joinedQuizId },
-            { $push: { participants: { userId: authUser, score, time } } },
+            { $push: { participants: { userId: authUser, username, score, time } } },
             { upsert: true, new: true }
           );
       
           // Continue with Redis and the rest of the process
-          await addToLeaderboard(joinedQuizId, authUser, score, time);
+          await addToLeaderboard(joinedQuizId, username, score, time);
       
           const leaderboard = await getLeaderboard(joinedQuizId);
       
