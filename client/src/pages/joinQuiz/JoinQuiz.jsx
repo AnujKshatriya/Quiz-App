@@ -6,10 +6,12 @@ import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useStopwatch } from 'react-timer-hook';
+import axios from 'axios'
 
 const JoinQuiz = () => {
   SocketConnection();
   const { joinedQuizId } = useSelector((store) => store.quiz);
+  const { authUser } = useSelector((store) => store.user);
   const questions = useSelector((state) => state.quiz.joinedQuizQuestions) || [];
   const error = useSelector((state) => state.quiz.quizError);
 
@@ -47,15 +49,20 @@ const JoinQuiz = () => {
     }
   };
 
-  const submitHandler = () => {
+  const submitHandler = async () => {
     checkAnswerAndUpdateScore();
     pause(); // Pause the timer
     const finalScore = score + (selectedOption && selectedOption.toLowerCase() === correctAnswer.toLowerCase() ? 1 : 0);
-
-    // toast.info(`Quiz completed! Your final score is ${score + (selectedOption === correctAnswer ? 1 : 0)}.`);
     console.log(`Your final score is ${finalScore}. and setscore value is ${score}`)
     console.log(`Time taken: ${minutes}:${seconds}`);
     const time = parseInt(minutes)*60 + parseInt(seconds);
+    
+    try {
+      const res = await axios.post("http://localhost:3000/api/leaderboard/set-userANDquiz", { userId:authUser, quizId : joinedQuizId}, { withCredentials: true });
+    } 
+    catch (error) {
+      console.error(error)
+    }
 
     navigate('/intermediate', { state: { finalScore, time, joinedQuizId } });
   };

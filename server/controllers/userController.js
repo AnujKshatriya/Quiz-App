@@ -49,6 +49,7 @@ const RegisterUser = async (req, res) => {
         res.status(500).json({ success: false, message: "Error registering user" });
     }
 };
+
 // Logging a Register
 const LoginUser = async (req, res) => {
     const { email, password } = req.body;
@@ -77,6 +78,7 @@ const LoginUser = async (req, res) => {
     }
 };
 
+//Logging out a User
 const LogoutUser = (req,res)=>{
     try {
         res.status(200).cookie("token", "").json({success: true, message: "Logged Out Successfully"})

@@ -158,10 +158,9 @@ const DeleteQuiz = async (req, res) => {
     return res.status(500).json({ success: false, message: "Quiz Deletion Failed", error: error.message });
   }
 };
-
-  
   
 
+// DISPLAYING ALL QUIZ CREATED BY USER
 const DisplayQuizList = async (req, res) => {
   const userId = req.body.userId;
 
@@ -185,5 +184,4 @@ const DisplayQuizList = async (req, res) => {
 };
   
 
-
-export {CreateQuiz, CreateQuestion, EditQuestion, DeleteQuestion, DeleteQuiz,DisplayQuizList}
+export {CreateQuiz, CreateQuestion, EditQuestion, DeleteQuestion, DeleteQuiz, DisplayQuizList};
