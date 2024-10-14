@@ -89,4 +89,26 @@ const LogoutUser = (req,res)=>{
     }
 }
 
-export { LoginUser, RegisterUser , LogoutUser};
+//GETTING ALL QUIZ GIVEN BY USER
+const getAllQuizGiven = async(req,res)=>{
+    const { userId } = req.body;
+    try {
+        const userWithQuizzes = await UserModel.findById(userId).populate({
+        path: 'quizJoined',
+        populate: {
+            path: 'owner',
+            select: 'username'  // Select only the fields you need
+        }}).lean();
+
+        if (!userWithQuizzes) {
+            return res.json({ success: false, message: "Cannot Get Quiz for User Doesn't Exist" });
+        }
+        const quizInfoArray = userWithQuizzes.quizJoined;
+        return res.json({ success: true, QuizInfo : quizInfoArray });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message });
+    }
+}
+
+export { LoginUser, RegisterUser , LogoutUser, getAllQuizGiven};

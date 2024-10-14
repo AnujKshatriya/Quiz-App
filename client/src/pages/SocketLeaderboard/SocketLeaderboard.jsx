@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { socket } from "../../custom hooks/SocketConnection";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import "./SocketLeaderboard.css"
+import LeaderboardUi from "../../components/LeaderboardUi/LeaderboardUi";
 
 const SocketLeaderboard = () => {
   const { state } = useLocation();
@@ -50,24 +50,8 @@ const SocketLeaderboard = () => {
   }
 
   return (
-    <div className="leaderboard-container">
-      <h1 className="leaderboard-title">Leaderboard</h1>
-      <div className="leaderboard">
-        <div className="leaderboard-header">
-          <div className="leaderboard-rank">Rank</div>
-          <div className="leaderboard-username">Username</div>
-          <div className="leaderboard-score">Score</div>
-          <div className="leaderboard-time">Time</div>
-        </div>
-        {leaderboard.map((player, index) => (
-          <div key={player.username} className={`leaderboard-row ${index % 2 === 0 ? "even" : "odd"}`}>
-            <div className="leaderboard-rank">{index + 1}</div>
-            <div className="leaderboard-username">{(player.username).toUpperCase()}</div>
-            <div className="leaderboard-score">{player.score}</div>
-            <div className="leaderboard-time">{player.time}</div>
-          </div>
-        ))}
-      </div>
+    <div>
+      <LeaderboardUi leaderboard={leaderboard}/>
     </div>
   );
 };

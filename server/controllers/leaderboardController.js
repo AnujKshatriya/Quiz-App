@@ -1,6 +1,6 @@
-import LeaderboardModel from "../models/leaderboardModel.js"
 import QuizModel from "../models/quizModel.js";
 import UserModel from "../models/userModel.js";
+import { getLeaderboard } from "../redis/roomLeaderboard.js";
 
 const SettingUserAndQuiz = async (req, res) => {
     const { userId, quizId } = req.body;
@@ -37,5 +37,20 @@ const SettingUserAndQuiz = async (req, res) => {
     }
 };
 
+const getQuizLeaderboard = async (req,res)=>{
+    const {quizId} = req.body;
+    try {
+        const leaderboard = await getLeaderboard(quizId);
+        if(!leaderboard){
+            res.json({ success: false, message: "Failed to send leaderboard data" });
+        }
+        res.json({success: true, leaderboard})
 
-export {SettingUserAndQuiz}
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message });
+    }
+}
+
+
+export {SettingUserAndQuiz, getQuizLeaderboard}

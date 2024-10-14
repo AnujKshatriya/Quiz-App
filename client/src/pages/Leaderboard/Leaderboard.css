@@ -1,0 +1,142 @@
+/* General styles */
+.quiz-container {
+    min-height: 50vh;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+    text-align: center; /* Center-align text in the container */
+  }
+  
+  .quiz-container h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #a00000;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Quiz card styles */
+  .quiz-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    background-color: #fff5f5;
+    border: 1px solid #a00000;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px rgba(160, 0, 0, 0.2);
+    transition: transform 0.3s;
+    width: 100%;
+  }
+  
+  .quiz-number {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #a00000;
+    margin-bottom: 1rem;
+  }
+  
+  .quiz-details {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    justify-content: space-around; /* Align content vertically */
+    align-items: end; /* Align content horizontally */
+    margin-bottom: 1rem;
+  }
+  
+  .quiz-name {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #a00000;
+    margin: 0;
+  }
+  
+  .quiz-owner,
+  .quiz-participants,
+  .quiz-questions {
+    font-size: 1rem;
+    color: #444;
+    margin: 0;
+  }
+  
+  .quiz-owner span,
+  .quiz-participants span,
+  .quiz-questions span {
+    font-weight: bold;
+    color: #a00000;
+  }
+  
+  .visit-button {
+    background-color: #a00000;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .visit-button:hover {
+    background-color: #7a0000;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .quiz-card {
+      padding: 2rem;
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .quiz-number {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+  
+    .quiz-name {
+      font-size: 1.6rem;
+    }
+
+    .quiz-owner,
+    .quiz-participants,
+    .quiz-questions {
+      font-size: 1rem;
+    }
+  
+    .visit-button {
+      padding: 0.8rem 2rem;
+    }
+  }
+  
+  /* Mobile-specific adjustments */
+  @media (max-width: 480px) {
+    .quiz-container h1 {
+      font-size: 1.5rem;
+    }
+  
+    .quiz-card {
+      padding: 1rem;
+    }
+  
+    .quiz-number {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    .quiz-name {
+      font-size: 1.2rem;
+    }
+  
+    .quiz-owner,
+    .quiz-participants,
+    .quiz-questions {
+      font-size: 0.9rem;
+    }
+  
+    .visit-button {
+      padding: 0.6rem 1.2rem;
+    }
+  }
+  

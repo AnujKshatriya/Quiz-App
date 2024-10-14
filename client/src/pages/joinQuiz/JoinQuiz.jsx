@@ -58,7 +58,7 @@ const JoinQuiz = () => {
     const time = parseInt(minutes)*60 + parseInt(seconds);
     
     try {
-      const res = await axios.post("http://localhost:3000/api/leaderboard/set-userANDquiz", { userId:authUser, quizId : joinedQuizId}, { withCredentials: true });
+      const res = await axios.post("/api/leaderboard/set-userANDquiz", { userId:authUser, quizId : joinedQuizId}, { withCredentials: true });
     } 
     catch (error) {
       console.error(error)
