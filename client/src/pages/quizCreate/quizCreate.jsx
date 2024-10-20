@@ -98,6 +98,7 @@ const QuizCreate = () => {
         withCredentials: true, 
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       })
       quizQuestions[id] = ""
@@ -139,6 +140,7 @@ const QuizCreate = () => {
         withCredentials: true, 
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       });
   
@@ -193,6 +195,7 @@ const saveQuiz = async() => {
       withCredentials: true,
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
     });
 

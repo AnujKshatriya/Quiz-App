@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./MyQuiz.css";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import img from '../../assets/q10.png'
 import { MdOutlineContentCopy } from "react-icons/md";
 import { FaShareSquare } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
@@ -25,6 +24,7 @@ const MyQuiz = () => {
   const fetchQuiz = async () => {
 
     try {
+      const token = localStorage.getItem('token'); 
       const response = await axios.post(
         "https://quiz-app-du7w.onrender.com/api/quiz/displayQuizList",
         {
@@ -32,6 +32,7 @@ const MyQuiz = () => {
         },
         {
           withCredentials: true,
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       );
 
@@ -108,9 +109,10 @@ const MyQuiz = () => {
         {
           withCredentials: true,
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
           },
-        }
+        },
       );
       
       if (response.data.success) {

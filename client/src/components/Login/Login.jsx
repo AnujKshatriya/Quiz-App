@@ -24,7 +24,6 @@ const Login = ({showLogin,showSignup}) => {
 
         const token = res.data.token; // Ensure the server sends this token
         localStorage.setItem('token', token);
-        console.log('Token: ',token)
 
         dispatch(setIsLogin(true))
         
