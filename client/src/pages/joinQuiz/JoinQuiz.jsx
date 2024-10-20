@@ -26,9 +26,6 @@ const JoinQuiz = () => {
   const question = questions[currentQuestionIndex] || {};
   const correctAnswer = question.answer;
 
-  // console.log('Current question:', question);
-  // console.log('Correct answer:', correctAnswer);
-
   const checkAnswerAndUpdateScore = () => {
     if (selectedOption.toLowerCase() === correctAnswer.toLowerCase()) {
       setScore((prevScore) => prevScore + 1);
@@ -53,8 +50,6 @@ const JoinQuiz = () => {
     checkAnswerAndUpdateScore();
     pause(); // Pause the timer
     const finalScore = score + (selectedOption && selectedOption.toLowerCase() === correctAnswer.toLowerCase() ? 1 : 0);
-    console.log(`Your final score is ${finalScore}. and setscore value is ${score}`)
-    console.log(`Time taken: ${minutes}:${seconds}`);
     const time = parseInt(minutes)*60 + parseInt(seconds);
     
     try {

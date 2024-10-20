@@ -5,9 +5,9 @@ const About = () => {
   return (
     <div className='about____'>
     <div className="about-container">
-      <h1 className="about-title">About Our Quiz Website</h1>
+      <h1 className="about-title">About Quizzer Website</h1>
       <p className="about-description">
-        Welcome to our Quiz Website! We provide an interactive platform for users to test their knowledge across various subjects.
+        Welcome to Quizzer Website! We provide an interactive platform for users to test their knowledge across various subjects.
       </p>
       <h2 className="about-section-title">Features</h2>
       <ul className="about-features-list">

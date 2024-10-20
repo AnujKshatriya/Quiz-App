@@ -1,99 +1,140 @@
-
+/* General styles */
 .quiz-container {
-  max-width: 800px; /* Center the container and limit its width */
-  margin: 20px auto; /* Center horizontally */
-  padding: 20px; /* Add padding for spacing */
-  background-color: white; /* White background for cards */
-  border-radius: 8px; /* Slightly rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  min-height: 50vh;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center; /* Center-align text in the container */
 }
 
-h1 {
-  text-align: center; /* Center the heading */
-  color: rgb(233, 0, 0); /* Medium red color for heading */
-  margin-bottom: 20px; /* Space below the heading */
+.quiz-container h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #a00000;
+  margin-bottom: 1.5rem;
 }
 
-/* Quiz Card Styles */
+/* Quiz card styles */
 .quiz-card {
-  border: 2px solid rgb(233, 0, 0); /* Medium red border for quiz cards */
-  border-radius: 10px; /* Rounded corners for cards */
-  padding: 15px; /* Padding inside the card */
-  margin-bottom: 15px; /* Space between cards */
-  background-color: #fff; /* White background for cards */
-  transition: transform 0.3s; /* Smooth hover effect */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  background-color: #fff5f5;
+  border: 1px solid #a00000;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 6px rgba(160, 0, 0, 0.2);
+  transition: transform 0.3s;
+  width: 100%;
 }
 
-.quiz-card:hover {
-  transform: translateY(-5px); /* Lift effect on hover */
-}
-
-/* Quiz Number */
 .quiz-number {
-  font-size: 24px; /* Larger font for quiz number */
-  font-weight: bold; /* Bold text */
-  color: rgb(233, 0, 0); /* Medium red color */
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #a00000;
+  margin-bottom: 1rem;
 }
 
-/* Quiz Details */
 .quiz-details {
-  margin-top: 10px; /* Space above details */
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: space-around; /* Align content vertically */
+  align-items: end; /* Align content horizontally */
+  margin-bottom: 1rem;
 }
 
 .quiz-name {
-  font-size: 20px; /* Larger font for quiz name */
-  color: black; /* Black color for quiz name */
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #a00000;
+  margin: 0;
 }
 
 .quiz-owner,
 .quiz-participants,
 .quiz-questions {
-  font-size: 14px; /* Smaller font for details */
-  color: #555; /* Dark gray for secondary text */
+  font-size: 1rem;
+  color: #444;
+  margin: 0;
 }
 
 .quiz-owner span,
 .quiz-participants span,
 .quiz-questions span {
-  font-weight: bold; /* Bold text for important details */
+  font-weight: bold;
+  color: #a00000;
 }
 
-/* Visit Button */
 .visit-button {
-  padding: 10px 15px; /* Padding for button */
-  border: none; /* Remove default border */
-  background-color: rgb(233, 0, 0); /* Medium red background */
-  color: white; /* White text color */
-  font-weight: bold; /* Bold text */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s; /* Smooth background color transition */
+  background-color: #a00000;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .visit-button:hover {
-  background-color: rgb(204, 4, 4); /* Darker red on hover */
+  background-color: #7a0000;
 }
 
-/* Responsive Styles */
-@media (max-width: 600px) {
-  .quiz-container {
-      padding: 10px; /* Less padding on smaller screens */
-  }
-
+/* Responsive adjustments */
+@media (max-width: 768px) {
   .quiz-card {
-      padding: 10px; /* Less padding inside cards */
-  }
-
-  .quiz-name {
-      font-size: 18px; /* Smaller font for quiz name */
+    padding: 2rem;
+    flex-direction: column;
+    width: 100%;
   }
 
   .quiz-number {
-      font-size: 20px; /* Smaller font for quiz number */
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .quiz-name {
+    font-size: 1.6rem;
+  }
+  .quiz-owner,
+  .quiz-participants,
+  .quiz-questions {
+    font-size: 1rem;
   }
 
   .visit-button {
-      width: 100%; /* Full width buttons on small screens */
-      padding: 12px; /* Increased padding for easier clicking */
+    padding: 0.8rem 2rem;
+  }
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 480px) {
+  .quiz-container h1 {
+    font-size: 1.5rem;
+  }
+
+  .quiz-card {
+    padding: 1rem;
+  }
+
+  .quiz-number {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .quiz-name {
+    font-size: 1.2rem;
+  }
+
+  .quiz-owner,
+  .quiz-participants,
+  .quiz-questions {
+    font-size: 0.9rem;
+  }
+
+  .visit-button {
+    padding: 0.6rem 1.2rem;
   }
 }

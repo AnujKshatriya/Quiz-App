@@ -51,7 +51,6 @@ io.on("connection", (socket)=>{
 
     socket.on('updateScore', async ({ joinedQuizId, authUser, score, time }) => {
         try {
-          console.log("Attempting to update MongoDB leaderboard");
           
           // Update MongoDB leaderboard
           const user  = await UserModel.findById(authUser);
@@ -76,9 +75,6 @@ io.on("connection", (socket)=>{
         }
       });
       
-    socket.on("disconnect",()=>{
-        // console.log("user disconnected", socket.id)
-    })
 })
 
 export {app,server,io}

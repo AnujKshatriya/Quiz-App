@@ -31,8 +31,6 @@ const SettingUserAndQuiz = async (req, res) => {
         // Rollback transaction if any operation fails
         await session.abortTransaction();
         session.endSession();
-
-        console.log(error);
         res.json({ success: false, message: error.message });
     }
 };
@@ -47,7 +45,6 @@ const getQuizLeaderboard = async (req,res)=>{
         res.json({success: true, leaderboard})
 
     } catch (error) {
-        console.log(error);
         res.json({ success: false, message: error.message });
     }
 }

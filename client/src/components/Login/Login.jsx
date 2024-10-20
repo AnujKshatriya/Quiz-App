@@ -53,7 +53,7 @@ const Login = ({showLogin,showSignup}) => {
             </div>
             <div className="form_items">
                 <input value={email} onChange={(e)=>{setEmail(e.target.value)}} type="text" placeholder='Your Email' />
-                <input value={password} onChange={(e)=>{setPassword(e.target.value)}} type="text" placeholder='Your Password' />
+                <input value={password} onChange={(e)=>{setPassword(e.target.value)}} type="password" placeholder='Your Password' />
             </div>
             <div className="buttonforlogin">
                 <button onClick={loginUser} className="login-button">Login</button>

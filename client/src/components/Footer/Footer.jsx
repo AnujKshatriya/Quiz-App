@@ -7,7 +7,7 @@ const Footer = () => {
     <div className='total_footer'>
       <div className='footer'>
         <div className='left____'>
-          <h1>Quizz</h1>
+          <h1>Quizzer</h1>
           <p>Quizz is your go-to platform for interactive quizzes across various topics. Whether you want to test your knowledge, learn something new, or just have fun, we have something for everyone!</p>
           <p>Join our community to explore engaging quizzes, track your progress, and compete with friends.</p>
           <ul className="social">
@@ -38,7 +38,7 @@ const Footer = () => {
       <hr />
       <div className='end'>
         <div className="ending">
-          Copyright &copy; {new Date().getFullYear()} Quizz.com
+          Copyright &copy; {new Date().getFullYear()} Quizzer.com
         </div>
       </div>
     </div>

@@ -59,7 +59,7 @@ const Navbar = ({showLogin,showSignup}) => {
     <div>
         <div className='navbar'>
           <div className="left">
-            <h1 className='title'>Quizz</h1>
+            <h1 className='title'>Quizzer</h1>
           </div>
           <div className="center">
             <ul className="center_list" >

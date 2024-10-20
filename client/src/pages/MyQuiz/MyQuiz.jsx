@@ -21,11 +21,8 @@ const MyQuiz = () => {
   const isLogin = useSelector((state) => state.login.isLogin);
   const owner = useSelector((state) => state.user.authUser);
 
-  console.log("Current User (Owner):", owner);
-
   // Move fetchQuiz to be a top-level function
   const fetchQuiz = async () => {
-    console.log("Fetching quizzes for owner:", owner);
 
     try {
       const response = await axios.post(
@@ -38,11 +35,8 @@ const MyQuiz = () => {
         }
       );
 
-      console.log("API Response:", response);
-
       if (response.data.success) {
         setQuizzes(response.data.quizzes);
-        console.log("Fetched Quizzes:", response.data.quizzes);
       } else {
         setError(response.data.message);
         console.error("Error from API:", response.data.message);
@@ -52,7 +46,6 @@ const MyQuiz = () => {
       console.error("API Request Error:", error);
     } finally {
       setLoading(false);
-      console.log("Loading complete");
     }
   };
 
@@ -68,7 +61,6 @@ const MyQuiz = () => {
   const copyId = async(id) => {
     try {
       await navigator.clipboard.writeText(id)
-      console.log("Quiz ID copied to clipboard")
       toast.success(`Quiz ID copied to clipboard`, {
         position: "top-right",
         autoClose: 3000,
@@ -80,7 +72,6 @@ const MyQuiz = () => {
       });
       
     } catch (error) {
-      console.log("Failed to copy Quiz ID")
       toast.error("Failed to copy quiz ID", {
         position: "top-center",
         autoClose: 3000,
@@ -123,7 +114,6 @@ const MyQuiz = () => {
       );
       
       if (response.data.success) {
-        console.log("Quiz deleted successfully:", response.data);
         toast.success('Quiz deleted successfully', {
           position: 'top-right',
           autoClose: 3000,
