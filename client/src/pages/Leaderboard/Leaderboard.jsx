@@ -15,7 +15,7 @@ const Leaderboard = () => {
     async function getResult() {
       try {
         if (userId) {
-          const res = await axios.post("/api/user/getAllQuizId", { userId }, { withCredentials: true });
+          const res = await axios.post("https://quiz-app-du7w.onrender.com/api/user/getAllQuizId", { userId }, { withCredentials: true });
           setQuizInfo(res.data.QuizInfo);
         }
       } catch (error) {
@@ -34,7 +34,7 @@ const Leaderboard = () => {
     }
 
     try {
-      const res = await axios.post("/api/leaderboard/get-quizLeaderboard", { quizId }, { withCredentials: true });
+      const res = await axios.post("https://quiz-app-du7w.onrender.com/api/leaderboard/get-quizLeaderboard", { quizId }, { withCredentials: true });
       if (res && res.data) {
         const data = res.data.leaderboard;
         leaderboardCache.current[quizId] = data; // Cache the data

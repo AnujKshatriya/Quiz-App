@@ -26,7 +26,7 @@ const MyQuiz = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/quiz/displayQuizList",
+        "https://quiz-app-du7w.onrender.com/api/quiz/displayQuizList",
         {
           userId: owner,
         },
@@ -100,7 +100,7 @@ const MyQuiz = () => {
   const deleteQuiz = async (id) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/quiz/deleteQuiz",
+        "https://quiz-app-du7w.onrender.com/api/quiz/deleteQuiz",
         { 
           quizId: id,
           userId: owner

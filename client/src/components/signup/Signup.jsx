@@ -20,7 +20,7 @@ const SignUp = ({showSignup, showLogin}) => {
       return;
     }
     try {
-      const res = await axios.post("/api/user/register", { username, email, password }, { withCredentials: true });
+      const res = await axios.post("https://quiz-app-du7w.onrender.com/api/user/register", { username, email, password }, { withCredentials: true });
       if (res.data.success) {
         // Automatically login after successful signup
         dispatch(setIsLogin(true));

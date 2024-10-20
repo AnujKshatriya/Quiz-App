@@ -18,7 +18,7 @@ const Login = ({showLogin,showSignup}) => {
 
   const loginUser = async() => {
     try {
-      const res = await axios.post("/api/user/login",{email,password})
+      const res = await axios.post(`https://quiz-app-du7w.onrender.com/api/user/login`,{email,password})
 
       if(res.data.success){
 

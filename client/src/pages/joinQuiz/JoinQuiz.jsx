@@ -53,7 +53,7 @@ const JoinQuiz = () => {
     const time = parseInt(minutes)*60 + parseInt(seconds);
     
     try {
-      const res = await axios.post("/api/leaderboard/set-userANDquiz", { userId:authUser, quizId : joinedQuizId}, { withCredentials: true });
+      const res = await axios.post("https://quiz-app-du7w.onrender.com/api/leaderboard/set-userANDquiz", { userId:authUser, quizId : joinedQuizId}, { withCredentials: true });
     } 
     catch (error) {
       console.error(error)
