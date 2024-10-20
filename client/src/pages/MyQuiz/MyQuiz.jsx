@@ -24,15 +24,16 @@ const MyQuiz = () => {
   const fetchQuiz = async () => {
 
     try {
-      const token = localStorage.getItem('token'); 
       const response = await axios.post(
         "https://quiz-app-du7w.onrender.com/api/quiz/displayQuizList",
         {
           userId: owner,
         },
         {
-          withCredentials: true,
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+          headers: { // Correctly place 'Authorization' here
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+        withCredentials: true
         }
       );
 
