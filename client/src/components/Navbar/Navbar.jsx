@@ -22,7 +22,7 @@ const Navbar = ({showLogin,showSignup}) => {
     const handleLogout = async () => {
       try {
         // Call the server's logout endpoint
-        const response = await axios.get('/api/user/logout');
+        const response = await axios.get('https://quiz-app-du7w.onrender.com/api/user/logout');
         
         if (response.data.success) {
           // Update the local state to reflect that the user is logged out
