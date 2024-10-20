@@ -145,3 +145,34 @@
     background-color: rgb(204, 4, 4);
     transform: scale(1.05);
 }
+
+@media (max-width: 705px) {
+    .quiz__right {
+        display: none; /* Hide the quiz__right section */
+    }
+}
+@media (max-width: 570px) {
+    .quiz__left input {
+        border-bottom: 1px solid lightgray; /* Change this value to minimize the underline */
+        width: 100%; /* Adjust the width if necessary */
+    }
+}
+
+@media (max-width: 458px) {
+    .add__question {
+        flex-direction: column; /* Stack the buttons vertically */
+        align-items: center; /* Center align buttons */
+    }
+
+    .add__question__button {
+        width: 100%; /* Make buttons take full width */
+        padding: 10px; /* Adjust padding for better appearance */
+    }
+
+    .header .save {
+        width: 100%; /* Make save button take full width */
+        padding: 10px; /* Adjust padding for better appearance */
+        margin-bottom: 10px; /* Add space below the save button */
+    }
+}
+

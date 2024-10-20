@@ -75,7 +75,7 @@ const Navbar = ({showLogin,showSignup}) => {
             
           {!isLoggedIn?
           (
-            <div>
+            <div className='right_switch_buttons'>
               <button className="login"  onClick={()=>{showLogin(true)}}>Login</button>
               <button className="SignUp" onClick={()=>{showSignup(true)}}>Sign Up</button>
              </div>

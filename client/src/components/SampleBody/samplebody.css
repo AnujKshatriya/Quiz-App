@@ -159,81 +159,49 @@
     }
 }
 
-/* Responsive Media Queries */
-@media (max-width: 1024px) {
+@media (max-width: 806px) {
     .hero-section {
-        flex-direction: column;
+        height: auto; /* Adjust height to fit content */
+        display: flex;
+        flex-direction: column; /* Stack elements vertically */
+        justify-content: center;
         align-items: center;
+        width: 100%;
+        margin-bottom: 20px;
     }
 
     .hero-right {
-        width: 60%;
-        margin-top: 20px;
+        display: none; /* Hide the right section */
+    }
+
+    .hero-left {
+        width: 90%; /* Take most of the available width */
+        align-items: center; /* Center align the content */
+        text-align: center;
     }
 
     .hero-left h1 {
-        font-size: 2.8em;
+        font-size: 2.5em; /* Adjust font size for smaller screens */
+        margin-bottom: 15px;
     }
 
     .hero-left p {
         font-size: 1em;
-        width: 90%;
-    }
-
-    .sample-question {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .question-card {
-        width: 80%;
+        width: 100%; /* Ensure text fits within the container */
         margin-bottom: 30px;
     }
-}
 
-@media (max-width: 768px) {
-    .hero-right {
-        width: 80%;
+    .button-section {
+        gap: 10px; /* Adjust button spacing */
     }
-
-    .hero-left h1 {
-        font-size: 2.4em;
-    }
-
-    .hero-left p {
-        font-size: 1em;
-        width: 95%;
-    }
-
+    
     .sample-question {
-        padding: 0;
+        flex-direction: column; /* Stack questions vertically */
+        align-items: center; /* Center align the questions */
+        gap: 20px; /* Add space between the cards */
     }
 
     .question-card {
-        width: 90%;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-right {
-        width: 100%;
-    }
-
-    .hero-left h1 {
-        font-size: 2em;
-    }
-
-    .hero-left p {
-        font-size: 0.9em;
-        width: 100%;
-    }
-
-    .question-card h2 {
-        font-size: 1.8em;
-    }
-
-    .question-card li {
-        font-size: 1em;
-        padding: 10px;
+        width: 90%; /* Take most of the available width */
     }
 }

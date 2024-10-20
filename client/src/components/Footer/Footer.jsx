@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div className='total_footer'>
       <div className='footer'>
-        <div className='left'>
+        <div className='left____'>
           <h1>Quizz</h1>
           <p>Quizz is your go-to platform for interactive quizzes across various topics. Whether you want to test your knowledge, learn something new, or just have fun, we have something for everyone!</p>
           <p>Join our community to explore engaging quizzes, track your progress, and compete with friends.</p>
@@ -17,7 +17,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className="center_">
+        <div className="center____">
           <h1>Company</h1>
           <ul className="item_center">
             <li>Home</li>
@@ -27,7 +27,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className="right_">
+        <div className="right____">
           <h1>Get in Touch</h1>
           <ul>
             <li>+1-212-456-7890</li>

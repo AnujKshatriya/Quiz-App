@@ -3,6 +3,7 @@ import './About.css'; // Import the CSS file
 
 const About = () => {
   return (
+    <div className='about____'>
     <div className="about-container">
       <h1 className="about-title">About Our Quiz Website</h1>
       <p className="about-description">
@@ -20,6 +21,7 @@ const About = () => {
       <p className="about-description">
         We encourage users to provide feedback and suggestions to help us improve the platform. Join us on this learning journey!
       </p>
+    </div>
     </div>
   );
 }
