@@ -10,19 +10,36 @@
     flex-wrap: wrap; /* Wrap content on smaller screens */
 }
 
-.left, .center_, .right_ {
+.left____, .center____, .right____ {
     flex: 1; /* Flex grow for equal spacing */
+    flex-direction: column;
     margin: 10px; /* Margin for spacing between sections */
+    text-align: left; /* Align text to the left */
 }
 
-.left h1, .center_ h1, .right_ h1 {
+/* Remove align-items to prevent center alignment */
+.left____, .center____, .right____ {
+    display: flex;
+    flex-direction: column;
+    
+    align-items: flex-start; /* Align items to the start */
+}
+
+.left____ h1, .center____ h1, .right____ h1 { 
     color: #d11717; /* Red color for headings */
+    margin: 0; /* Remove default margin */
+}
+
+/* Additional padding or margin to the heading for separation */
+.left____ h1, .center____ h1, .right____ h1 {
+    padding-bottom: 5px; /* Optional padding for spacing */
 }
 
 .social {
     display: flex;
     list-style: none; /* Remove default list styles */
     padding: 0; /* Remove default padding */
+    justify-content: flex-start; /* Align social icons to the left */
 }
 
 .social li {
@@ -57,18 +74,33 @@ hr {
     margin: 20px 0; /* Margin for spacing */
 }
 
-/* Responsive styles */
-@media (max-width: 768px) {
+/* Responsive Styles */
+@media (max-width: 693px) {
     .footer {
-        flex-direction: column; /* Stack sections on small screens */
-        align-items: center; /* Center items */
+        flex-direction: column; /* Stack sections vertically */
+        align-items: flex-start; /* Align content to the left */
+        text-align: left; /* Ensure all text is left-aligned */
     }
 
-    .left, .center_, .right_ {
-        text-align: center; /* Center text for small screens */
+    .left____, .center____, .right____ {
+        flex: none; /* Remove flex-grow to prevent stretching */
+        width: 100%; /* Make sections full-width */
+        margin: 5px 0; /* Reduce margin for better spacing */
     }
 
     .social {
-        justify-content: center; /* Center social icons */
+        justify-content: flex-start; /* Align social icons to the left */
+    }
+
+    .social li {
+        margin-right: 10px; /* Adjust spacing between icons */
+    }
+
+    hr {
+        margin: 10px 0; /* Reduce margin for smaller screens */
+    }
+
+    .end {
+        margin-top: 10px; /* Reduce spacing */
     }
 }

@@ -2,7 +2,7 @@
 .navbar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center;    
     padding: 15px 30px; /* Padding for a spacious layout */
     background-color: rgb(204, 38, 38); /* Reddish background */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
@@ -51,6 +51,7 @@
 
 .right {
     display: flex;
+    flex-direction: row;
     gap: 20px; /* Space between buttons */
 }
 
@@ -91,17 +92,103 @@ button.SignUp:hover {
     color: #ffffff; /* White text on hover */
 }
 
-@media (max-width: 768px) {
+@media (min-width: 900px) and (max-width: 1030px) {
+    .right_switch_buttons {
+        display: flex;
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 15px; /* Add space between login and signup buttons */
+        align-items: center; /* Align buttons in the center */
+    }
+}
+
+
+@media (max-width: 900px) {
+    
     .navbar {
         flex-direction: column; /* Stack items vertically on small screens */
+        padding: 10px 22px; /* Padding for a spacious layout */
+         transition: background-color 0.3s ease; /* Smooth transition */
+
+
+
     }
 
     .center_list {
-        flex-direction: column; /* Stack list items vertically */
+        flex-direction: row; /* Stack list items vertically */
         align-items: center; /* Center align items */
+        gap:20px;
+    }
+
+    .right {
+        display: flex;
+        flex-direction: column; /* Stack buttons vertically */
+        justify-content: center;
+        align-items: center;
+
+    }
+    button.SignUp {
+        background-color: rgba(255, 255, 255, 0.8); /* Light white background for signup */
+        color: rgb(204, 38, 38); /* Red text */
+        border: 2px solid white; /* Red border */
+        margin-top: 20px;
+    }
+}
+
+
+@media (max-width: 695px) {
+    .navbar {
+        flex-direction: column; /* Stack items vertically on small screens */
+        max-height:fit-content;
+        width: 100%;
+    }
+
+    .center_list {
+        flex-direction: row; /* Stack list items vertically */
+        align-items: center; /* Center align items */
+        gap:0px;
     }
 
     .right {
         flex-direction: column; /* Stack buttons vertically */
+    }
+    button.SignUp {
+        background-color: rgba(255, 255, 255, 0.8); /* Light white background for signup */
+        color: rgb(204, 38, 38); /* Red text */
+        border: 2px solid white; /* Red border */
+        margin-top: 20px;
+    }
+}
+
+
+/* Navbar Adjustment for Small Screens */
+@media (max-width: 527px) {
+    .navbar {
+        display: flex;
+        flex-direction: row; /* Stack items vertically */
+        width: 100%; /* Full-width */
+        max-width: 100%; /* Ensure it doesn't overflow */
+        align-items: center; /* Center-align items */
+    }
+
+    .center_list {
+        flex-direction: column; /* Stack list items vertically */
+        align-items: center;
+        width: 100%; /* Full width */
+        gap: 0px;
+    }
+
+    .right {
+        flex-direction: column; /* Stack buttons vertically */
+        width: 100%; /* Full-width alignment */
+        align-items: center; /* Center-align content */
+    }
+
+    button.SignUp {
+        background-color: rgba(255, 255, 255, 0.8); /* Light background */
+        color: rgb(204, 38, 38); /* Red text */
+        border: 2px solid white;
+        padding: 12px 15px;
+        width: 80%; /* Adjust width to be responsive */
+        margin-top: 10px;
     }
 }

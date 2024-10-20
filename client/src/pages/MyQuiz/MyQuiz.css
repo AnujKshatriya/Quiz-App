@@ -128,3 +128,23 @@ h2 {
     padding-bottom: 6px;
     cursor: pointer;
 }
+
+@media (max-width: 820px) {
+    .quiz_list {
+        grid-template-columns: 1fr 1fr; /* Set to two columns */
+    }
+
+    .quiz_item, .new__quiz {
+        width: 100%; /* Make cards responsive within the grid */
+    }
+}
+
+@media (max-width: 600px) {
+    .quiz_list {
+        grid-template-columns: 1fr; /* Set to one column */
+        gap: 20px;
+    }
+    .quiz_item, .new__quiz {
+        width: 100%; /* Make cards responsive within the grid */
+    }
+}
