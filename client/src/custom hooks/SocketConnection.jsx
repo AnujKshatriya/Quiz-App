@@ -3,7 +3,7 @@ import io  from 'socket.io-client'
 import {useSelector, useDispatch} from 'react-redux'
 import { setJoinedQuizQuestions, setQuizError } from '../redux/quizSlice.js'
 
-export const socket = io("http://localhost:3000", {
+export const socket = io("https://quiz-app-du7w.onrender.com", {
   transports: ['websocket'],
 });
 
