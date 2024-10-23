@@ -4,14 +4,14 @@ import AuthMiddleWare from '../middleware/auth.js'
 
 const QuizRouter = express.Router()
 
-QuizRouter.post('/createQuestion', AuthMiddleWare ,CreateQuestion)
+QuizRouter.post('/createQuestion', CreateQuestion)
 QuizRouter.post('/createQuiz', AuthMiddleWare , CreateQuiz)
 
-QuizRouter.post('/editQuestion', AuthMiddleWare , EditQuestion)
+QuizRouter.post('/editQuestion', EditQuestion)
 
-QuizRouter.post('/deleteQuestion', AuthMiddleWare ,DeleteQuestion)
-QuizRouter.post('/deleteQuiz', AuthMiddleWare,  DeleteQuiz)
+QuizRouter.post('/deleteQuestion', DeleteQuestion)
+QuizRouter.post('/deleteQuiz', DeleteQuiz)
 
-QuizRouter.post('/displayQuizList',AuthMiddleWare, DisplayQuizList)
+QuizRouter.post('/displayQuizList', DisplayQuizList)
 
 export default QuizRouter
