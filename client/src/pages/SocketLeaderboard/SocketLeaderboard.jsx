@@ -15,16 +15,12 @@ const SocketLeaderboard = () => {
 
   useEffect(() => {
     if (joinedQuizId && authUser && score !== null && time !== null) {
-      console.log(socket);
       socket.emit("updateScore", { joinedQuizId, authUser, score, time });
-      console.log("update score emited from frontend ...");
     }
   }, [joinedQuizId, authUser, score, time]);
 
   useEffect(() => {
     socket.on("updateRankings", (updatedLeaderboard) => {
-      console.log("update ranking is working...");
-      console.log("leaderboard is -> ", updatedLeaderboard);
       setLeaderboard(updatedLeaderboard);
       setLoading(false); // Set loading to false once leaderboard data is received
     });

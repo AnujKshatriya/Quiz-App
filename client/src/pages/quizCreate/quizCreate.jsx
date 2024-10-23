@@ -5,6 +5,7 @@ import { MdQuiz } from "react-icons/md";
 import Question from '../../components/question/question';
 import toast from 'react-hot-toast';
 import {useSelector} from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 
 const QuizCreate = () => {
@@ -14,6 +15,7 @@ const QuizCreate = () => {
   const [quizName,setQuizName] = useState("")
   const [quizQuestions,setQuizQuestions] = useState([]);
   const [participants, setParticipants] = useState([]);
+  const navigate = useNavigate();
   
   const [questions, setQuestions] = useState([{
     id: 0,
@@ -201,6 +203,7 @@ const saveQuiz = async() => {
 
     if (response.data.success) {
       toast.success(response.data.message);
+      navigate('/my-quiz');
     } 
     else {
       toast.error(response.data.message);

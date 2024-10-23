@@ -14,7 +14,6 @@ const SocketConnection = () => {
 
     useEffect(()=>{
         if (authUser && joinedQuizId) {
-            console.log("user -> ", authUser, " id -> ", joinedQuizId)
       
             socket.emit('joinRoom', { joinedQuizId, authUser });
 
@@ -25,7 +24,6 @@ const SocketConnection = () => {
                     answer
                 }));
                 dispatch(setJoinedQuizQuestions(allQuestions))
-                console.log(allQuestions)
             })
             
             socket.on('error',(error)=>{
